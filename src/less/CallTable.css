@@ -1,0 +1,21 @@
+.CallTable {
+  margin-top: 3rem;
+  margin-left: 15rem;
+  font-weight: 400;
+}
+
+.CallQueue {
+  font-size: 2rem;
+  font-size: 32px;
+}
+
+.Wrapper {
+  position: relative;
+  width: 50rem;
+}
+
+.Icon {
+  position: absolute;
+  right: 0;
+  bottom: -1.25rem;
+}

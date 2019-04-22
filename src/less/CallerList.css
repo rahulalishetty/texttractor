@@ -1,0 +1,40 @@
+table {
+  border-collapse: collapse;
+}
+
+.CallerTable {
+  width: 50rem;
+  text-align: left;
+  background-color: white;
+  box-shadow: 0px -1px 10px 0px rgba(131, 145, 146, 0.75);
+}
+
+.HeaderRow {
+  background-color: black;
+}
+
+.CallerTable th {
+  font-size: 16px;
+  color: white;
+  font-weight: 400;
+  padding: 1.2rem;
+}
+
+.CallerTable > tr {
+  background-color: black;
+}
+
+.CallerTable tr {
+  height: 2rem;
+  padding: 4rem 0;
+  font-size: 16px;
+  border-bottom: 0.1rem solid #f0f3f4;
+}
+
+.Row {
+}
+
+.CallerTable td {
+  padding: 0.5rem;
+  padding-left: 1rem;
+}
