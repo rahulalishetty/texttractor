@@ -1,0 +1,16 @@
+.MessageRoot {
+	padding-top: 10px;
+	width: 100%;
+	margin-bottom: 2%;
+	height: auto;
+}
+.Message {
+	padding: 2% 2% 2% 2.5%;
+	text-align: left;
+	box-shadow: 2px 2px 10px grey;
+	max-width: 80%;
+	border-radius: 50px;
+	display: inline-block;
+	margin-left: 1%;
+	margin-right: 1%;
+}

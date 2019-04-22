@@ -14,17 +14,17 @@ export default class CallTable extends Component {
   componentDidMount() {
     this.setState({
       rows: [
-        this.createData("abc", "Reg. Payment"),
-        this.createData("cde", "to Connect"),
-        this.createData("Eclair", "just for fun"),
-        this.createData("Cupcake", "did not respond"),
-        this.createData("Gingerbread", "hanged")
+        this.createData("abc", "Reg. Payment", "7386909030"),
+        this.createData("cde", "to Connect", "7386909031"),
+        this.createData("Eclair", "just for fun", "7386909032"),
+        this.createData("Cupcake", "did not respond", "7386909034"),
+        this.createData("Gingerbread", "hanged", "7386909036")
       ]
     });
   }
 
-  createData = (name, reasonToCall) => {
-    return { name, reasonToCall };
+  createData = (name, reasonToCall, phone) => {
+    return { name, reasonToCall, phone };
   };
 
   openModal = () => {
@@ -51,7 +51,7 @@ export default class CallTable extends Component {
         {/* <p className="CallQueue">Call Queue</p> */}
         <p className="CallQueue">Call Queue</p>
         <div className="Wrapper">
-          <CallerList rows={this.state.rows} />
+          <CallerList rows={this.state.rows} makeCall={this.props.makeCall} />
           <Add
             style={{
               borderRadius: "50%",

@@ -31,3 +31,26 @@ img {
   height: 3.5rem;
   border-radius: 50%;
 }
+
+.connecting {
+  flex-grow: 1;
+  text-align: center;
+}
+.endCallParent {
+  flex-grow: 1;
+  text-align: center;
+}
+.endCallParent svg {
+  padding: 0.5rem;
+}
+.endCall {
+  text-align: center;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.callDuration {
+  flex-grow: 2;
+  text-align: center;
+}

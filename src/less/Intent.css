@@ -1,0 +1,30 @@
+.IntentRoot {
+	width: 90%;
+	margin-left: 5%;
+	border-radius: 2px;
+	display: flex;
+	flex-direction: row;
+	/* box-shadow: 2px 2px 2px grey; */
+	margin-bottom: 5px;
+	border: 1px solid lightgrey;
+}
+.IntentRoot:hover {
+	cursor: pointer;
+}
+.IntentHead {
+	display: flex;
+	background-color: lightgray;
+	color: black;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	flex-grow: 1;
+	padding: 2% 2% 2% 2%;
+}
+
+.IntentBody {
+	display: flex;
+	flex: 0 0 80%;
+	padding: 2% 2% 2% 2%;
+	align-items: center;
+}
