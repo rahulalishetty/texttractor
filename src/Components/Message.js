@@ -8,17 +8,11 @@ export default class Message extends Component {
 		textAlign: 'right'
 	};
 
-	styleAvatar = {
-		borderRadius: '50%',
-		backgroundColor: 'lightgrey',
-		padding: '3%'
-	};
-
 	render() {
 		if (this.props.left) {
 			return (
 				<div className='MessageRoot' style={this.styleLeft}>
-					<span style={this.styleAvatar}>RA</span>
+					<span className='Avatar'>RA</span>
 					<span className='Message'>{this.props.children}</span>
 				</div>
 			);
@@ -26,7 +20,7 @@ export default class Message extends Component {
 		return (
 			<div className='MessageRoot' style={this.styleRight}>
 				<span className='Message'>{this.props.children}</span>
-				<span style={this.styleAvatar}>PK</span>
+				<span className='Avatar'>PK</span>
 			</div>
 		);
 	}

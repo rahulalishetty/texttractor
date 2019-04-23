@@ -1,56 +1,55 @@
 .Toolbar {
-  height: 4rem;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: #f7f9f9;
-  padding: 0 20px;
-  box-sizing: border-box;
-  z-index: 90;
-  box-shadow: 3px 3px 3px 3px rgba(235, 235, 238, 0.5);
+	height: 4rem;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: #f7f9f9;
+	padding: 0 20px;
+	box-sizing: border-box;
+	z-index: 90;
+	box-shadow: 3px 3px 3px 3px rgba(235, 235, 238, 0.5);
 }
 
 .Logo {
-  margin-top: 0.25rem;
-  width: 5rem;
-  height: 3.5rem;
-  border-radius: 50%;
-  vertical-align: middle;
+	margin-top: 0.25rem;
+	width: 5rem;
+	height: 3.5rem;
+	border-radius: 50%;
+	vertical-align: middle;
 }
 
 .callScreenHeaderRoot {
-  display: flex;
-  background-color: white;
-  align-items: center;
-  height: 10vh;
+	display: flex;
+	background-color: white;
+	align-items: center;
+	height: 10vh;
 }
 img {
-  margin-left: 1rem;
-  width: 3.5rem;
-  height: 3.5rem;
-  border-radius: 50%;
+	margin-left: 1rem;
+	width: 3.5rem;
+	height: 3.5rem;
+	border-radius: 50%;
 }
-
 .connecting {
-  flex-grow: 1;
-  text-align: center;
+	flex-grow: 1;
+	text-align: center;
 }
 .endCallParent {
-  flex-grow: 1;
-  text-align: center;
+	flex-grow: 1;
+	text-align: center;
 }
 .endCallParent svg {
-  padding: 0.5rem;
+	padding: 0.5rem;
 }
 .endCall {
-  text-align: center;
-  background-color: red;
-  color: white;
-  border-radius: 50%;
-  cursor: pointer;
+	text-align: center;
+	background-color: red;
+	color: white;
+	border-radius: 50%;
+	cursor: pointer;
 }
 .callDuration {
-  flex-grow: 2;
-  text-align: center;
+	flex-grow: 2;
+	text-align: center;
 }
