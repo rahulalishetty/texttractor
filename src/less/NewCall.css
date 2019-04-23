@@ -1,29 +1,33 @@
 .Form {
-  margin: 2rem 2rem;
+	margin: 2rem 2rem;
 }
 
 .InputForm {
-  margin-top: 2rem;
+	margin-top: 2rem;
 }
 
 .InputForm div {
-  width: 25rem;
+	width: 100%;
 }
 
 .Label {
-  padding-top: 1rem;
-  padding-right: 1rem;
-  margin: 0;
-  display: inline-block;
-  width: 10rem;
+	padding-top: 1rem;
+	padding-right: 1rem;
+	margin: 0;
+	display: inline-block;
+	width: 50%;
+}
+
+.inputField {
+	width: 50%;
 }
 
 .SaveButton {
-  margin-top: 2rem;
-  font-size: 1rem;
-  border-radius: 0.2rem;
-  border: 0;
-  margin-left: 12rem;
-  padding: 0.4rem;
-  background-color: #85c1e9;
+	margin-top: 10%;
+	font-size: 1rem;
+	border-radius: 0.2rem;
+	border: 0;
+	margin-left: 40%;
+	padding: 0.4rem;
+	background-color: #85c1e9;
 }

@@ -5,6 +5,7 @@ import CallScreen from './Components/CallScreen';
 import CallDetails from './Components/CallDetails';
 import './App.css';
 import { sipRegister } from './utils/sipUtils';
+import axios from './axios-firebase';
 
 class App extends Component {
 	constructor(props) {
@@ -12,11 +13,43 @@ class App extends Component {
 		this.state = {
 			call: null,
 			onGoingCall: false,
-			phoneNumber: null
+			phoneNumber: null,
+			showModal: false,
+			contacts: null
 		};
 		sipRegister();
 	}
+	componentDidMount() {
+		let fetchedRows = null;
+		axios
+			.get('https://texttractive.firebaseio.com/contact.json')
+			.then(response => {
+				fetchedRows = response.data;
+				console.log(Object.values(fetchedRows));
+				fetchedRows = Object.values(fetchedRows);
+				this.setState({ contacts: fetchedRows });
+			})
+			.catch(error => console.log(error));
+	}
+	openModal = () => {
+		console.log('open model');
+		this.setState({ showModal: true });
+	};
 
+	closeModal = () => {
+		this.setState({ showModal: false });
+	};
+
+	addNewContact = newContact => {
+		let updatedContacts = this.state.contacts;
+		updatedContacts.push(newContact);
+		console.log(updatedContacts);
+		this.setState({ contacts: updatedContacts });
+		axios
+			.post('/contact.json', newContact)
+			.then(response => console.log(response))
+			.catch(error => console.log(error));
+	};
 	makeCall = caller => {
 		this.setState({
 			call: caller,
@@ -42,7 +75,16 @@ class App extends Component {
 	render() {
 		let show = null;
 		if (this.state.call === null) {
-			show = <CallTable makeCall={this.makeCall} />;
+			show = (
+				<CallTable
+					makeCall={this.makeCall}
+					contacts={this.state.contacts}
+					openModal={this.openModal}
+					closeModal={this.closeModal}
+					addNewContact={this.addNewContact}
+					showModal={this.state.showModal}
+				/>
+			);
 		} else {
 			show = (
 				<CallDetails
