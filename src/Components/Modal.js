@@ -5,16 +5,16 @@ import Aux from "./Aux";
 import Backdrop from "./BackDrop";
 
 class Modal extends Component {
-  shouldComponentUpdate(nextProps, nextState, nextContext) {
-    return (
-      nextProps.show !== this.props.show ||
-      nextProps.children !== this.props.children
-    );
-  }
+  //   shouldComponentUpdate(nextProps, nextState, nextContext) {
+  //     return (
+  //       nextProps.show !== this.props.show ||
+  //       nextProps.children !== this.props.children
+  //     );
+  //   }
 
-  componentWillUpdate() {
-    console.log("modal updated");
-  }
+  //   componentWillUpdate() {
+  //     console.log("modal updated");
+  //   }
 
   render() {
     return (

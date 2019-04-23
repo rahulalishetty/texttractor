@@ -7,7 +7,7 @@
 }
 
 .InputForm div {
-  width: 25rem;
+  width: 100%;
 }
 
 .Label {
@@ -15,15 +15,19 @@
   padding-right: 1rem;
   margin: 0;
   display: inline-block;
-  width: 10rem;
+  width: 50%;
+}
+
+.inputField {
+  width: 50%;
 }
 
 .SaveButton {
-  margin-top: 2rem;
+  margin-top: 10%;
   font-size: 1rem;
   border-radius: 0.2rem;
   border: 0;
-  margin-left: 12rem;
+  margin-left: 40%;
   padding: 0.4rem;
   background-color: #85c1e9;
 }

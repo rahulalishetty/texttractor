@@ -4,7 +4,7 @@ import "../less/NewCall.css";
 export default class NewCall extends Component {
   state = {
     name: "",
-    reason: "",
+    reasonToCall: "",
     phone: ""
   };
 
@@ -13,7 +13,7 @@ export default class NewCall extends Component {
   };
 
   updateReason = reason => {
-    this.setState({ reason: reason });
+    this.setState({ reasonToCall: reason });
   };
 
   updatePhone = phone => {
@@ -21,11 +21,11 @@ export default class NewCall extends Component {
   };
 
   saveForm = () => {
-    console.log(this.state.name, this.state.reason, this.state.phone);
+    console.log(this.state.name, this.state.reasonToCall, this.state.phone);
     let name = this.state.name;
-    let reason = this.state.reason;
+    let reasonToCall = this.state.reasonToCall;
     let phone = this.state.phone;
-    let newContact = { name, reason, phone };
+    let newContact = { name, reasonToCall, phone };
     this.props.addNewContact(newContact);
   };
 
@@ -41,6 +41,7 @@ export default class NewCall extends Component {
               name="name"
               required
               onChange={event => this.updateName(event.target.value)}
+              className="InputField"
             />
           </div>
           <div>
@@ -50,6 +51,7 @@ export default class NewCall extends Component {
               name="reason"
               required
               onChange={event => this.updateReason(event.target.value)}
+              className="InputField"
             />
           </div>
           <div>
@@ -59,6 +61,7 @@ export default class NewCall extends Component {
               name="name"
               required
               onChange={event => this.updatePhone(event.target.value)}
+              className="InputField"
             />
           </div>
         </div>
