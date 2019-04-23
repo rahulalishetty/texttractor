@@ -29,7 +29,7 @@ export default function CallerList(props) {
                       color: "white",
                       marginTop: "0.2rem"
                     }}
-                    onClick={event => props.makeCall(contact)}
+                    onClick={event => props.placeCall(contact)}
                   />
                 </td>
               </tr>
