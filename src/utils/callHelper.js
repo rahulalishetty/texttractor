@@ -46,25 +46,25 @@ export const generateUID = phoneNumber => {
 export const startRingTone = () => {
   try {
     ringTone.crossOrigin = "anonymous";
-    ringtone.play();
+    ringTone.play();
   } catch (e) {}
 };
 
 export const stopRingTone = () => {
   try {
-    ringtone.pause();
+    ringTone.pause();
   } catch (e) {}
 };
 
 export const startRingbackTone = () => {
   try {
-    ringbacktone.play();
+    // ringbacktone.play();
   } catch (e) {}
 };
 
 export const stopRingbackTone = () => {
   try {
-    ringbacktone.pause();
+    // ringbacktone.pause();
   } catch (e) {}
 };
 
@@ -118,7 +118,7 @@ export const isBusy = sipResponseCode => {
 };
 
 export const doCallEndThings = (e, UID) => {
-  // var iSipResponseCode = e.getSipResponseCode();
+  const iSipResponseCode = e.getSipResponseCode();
   if (isBusy(e.getSipResponseCode())) {
     //show user is busy status
   } else if (!(e.getSipResponseCode() >= 400 && !isBusy(iSipResponseCode))) {

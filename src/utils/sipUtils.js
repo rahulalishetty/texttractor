@@ -1,12 +1,18 @@
+"use-strict";
+
+/**
+ * @author Balraj Singh
+ */
+
 import {
-  generateUID,
-  startTranscription,
   startRingTone,
   stopRingTone,
   stopRingbackTone,
   doCallEndThings,
-  isBusy
-} from "./helpers/callHelper";
+  isBusy,
+  generateUID,
+  startTranscription
+} from "./callHelper";
 let oSipStack,
   oSipSessionRegister,
   oSipSessionCall,
@@ -18,7 +24,7 @@ let UID;
 let isTransportError = false,
   isOnCall = false,
   stackStopped = false;
-
+let callEndStatus = "Call Ended";
 export const sipRegister = () => {
   try {
     oSipStack = new SIPml.Stack({
@@ -35,7 +41,7 @@ export const sipRegister = () => {
       }
     });
 
-    if (oSipStack.start() != 0) {
+    if (oSipStack.start() !== 0) {
       //stack did not start
     }
   } catch (e) {
@@ -85,7 +91,7 @@ export const sipCall = phoneNumber => {
         },
         {
           name: "Caller-ID",
-          value: callerId,
+          value: "7386909035", //todo
           session: false
         },
         {
@@ -148,7 +154,7 @@ export function sipHangup() {
 
 // Callback function for SIP Stacks
 const onSipEventStack = (e /*SIPml.Stack.Event*/) => {
-  tsk_utils_log_info("==stack event = " + e.type);
+  // tsk_utils_log_info('==stack event = ' + e.type);
   console.log("Stack Event", e);
 
   if (e.type == "i_new_message") {
@@ -178,6 +184,7 @@ const onSipEventStack = (e /*SIPml.Stack.Event*/) => {
     case "failed_to_start":
     case "failed_to_stop": {
       stackStopped = true;
+      // store.dispatch(toggleSipConnectionStatus({ connected: false }));
 
       if (!oSipStack) {
         return;
@@ -242,7 +249,7 @@ const onSipEventStack = (e /*SIPml.Stack.Event*/) => {
 };
 // Callback function for SIP sessions (INVITE, REGISTER, MESSAGE...)
 const onSipEventSession = (e /* SIPml.Session.Event */) => {
-  tsk_utils_log_info("==session event = " + e.type);
+  // tsk_utils_log_info('==session event = ' + e.type);
   console.log("Sip Event Occured", e);
   switch (e.type) {
     case "connecting":
