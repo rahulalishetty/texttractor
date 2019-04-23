@@ -4,34 +4,20 @@ import Header from './Header';
 import CallDetails from './CallDetails';
 
 export default class CallScreen extends Component {
-	state = {
-		onGoingCall: true
-	};
-	endCall = () => {
-		this.setState({ onGoingCall: false });
-	};
-	isOnGoingCall = onGoingCall => {
-		if (onGoingCall)
-			return (
-				<Header
-					callscreen
-					contactNumber={this.props.caller.phone}
-					duration='02:23'
-					endCall={this.endCall}
-				/>
-			);
-		else return <Header />;
-	};
 	render() {
 		return (
 			<div className='callScreenRoot'>
 				<Header
-					callscreen={this.state.onGoingCall}
+					callscreen={this.props.onGoingCall}
 					contactNumber={this.props.caller.phone}
 					duration='02:23'
-					endCall={this.endCall}
+					endCall={this.props.endCall}
+					goToHomePage={this.props.goToHomePage}
 				/>
-				<CallDetails onGoingCall={this.state.onGoingCall} />
+				<CallDetails
+					onGoingCall={this.props.onGoingCall}
+					callerName={this.props.caller.name}
+				/>
 			</div>
 		);
 	}

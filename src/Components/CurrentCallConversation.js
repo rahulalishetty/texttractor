@@ -8,9 +8,10 @@ export default class CurrentCallConversation extends Component {
 		this.refs.chat.scrollTop = this.refs.chat.scrollHeight;
 	}
 	render() {
+		console.log(this.props.personName);
 		return (
 			<div className='CurrentCallConversationRoot'>
-				<ChatHead>{this.props.personName}</ChatHead>
+				<ChatHead>{this.props.callerName}</ChatHead>
 				<div className='chat' ref='chat'>
 					<Message>Hello Parikshith</Message>
 					<Message left>Hi Rahul</Message>
@@ -23,6 +24,14 @@ export default class CurrentCallConversation extends Component {
 					<Message>Yeah Sure</Message>
 					<Message>
 						We'll play Snahok with our squad and will go to pai nan
+					</Message>
+					<Message left>Sounds cool</Message>
+					<Message>Today we'll definately win the chicken dinner</Message>
+					<Message left>
+						Yo Bro
+						<span role='img' aria-label='Yo'>
+							&#129304;
+						</span>
 					</Message>
 					<Message left>Sounds cool</Message>
 					<Message>Today we'll definately win the chicken dinner</Message>

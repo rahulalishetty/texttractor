@@ -8,10 +8,8 @@ export default class Header extends Component {
 		if (this.props.callscreen)
 			return (
 				<div className='callScreenHeaderRoot'>
-					<img src={logo} alt='logo' />
-					<p className='connecting'>
-						Connecting to: {this.props.contactNumber}
-					</p>
+					<img src={logo} alt='logo' onClick={this.props.goToHomePage} />
+					<p className='connecting'>Connecting to: {this.props.phone}</p>
 					<div className='endCallParent'>
 						<CallEnd className='endCall' onClick={this.props.endCall} />
 					</div>
@@ -21,7 +19,7 @@ export default class Header extends Component {
 		else
 			return (
 				<div className='callScreenHeaderRoot'>
-					<img src={logo} alt='logo' />
+					<img src={logo} alt='logo' onClick={this.props.goToHomePage} />
 				</div>
 			);
 	}

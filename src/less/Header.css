@@ -21,15 +21,17 @@
 
 .callScreenHeaderRoot {
 	display: flex;
-	background-color: white;
 	align-items: center;
 	height: 10vh;
+	background-color: #263238;
+	color: white;
 }
 img {
 	margin-left: 1rem;
 	width: 3.5rem;
 	height: 3.5rem;
 	border-radius: 50%;
+	cursor: pointer;
 }
 .connecting {
 	flex-grow: 1;
