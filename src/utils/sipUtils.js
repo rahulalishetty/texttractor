@@ -26,6 +26,8 @@ let isTransportError = false,
 	stackStopped = false;
 let callEndStatus = 'Call Ended';
 export const sipRegister = () => {
+	console.log('Registering');
+
 	try {
 		oSipStack = new SIPml.Stack({
 			realm: '34.217.60.9:8089',
@@ -54,10 +56,13 @@ export const sipRegister = () => {
 export const initializeSip = () => {
 	SIPml.setDebugLevel('info');
 	audioRemote = document.getElementById('audio_remote');
+	console.log('Init Audio', audioRemote);
 	SIPml.init(postInit);
 };
 
 const postInit = () => {
+	console.log('Audio remote', audioRemote);
+
 	oConfigCall = {
 		audio_remote: audioRemote,
 		bandwidth: {
@@ -248,7 +253,7 @@ const onSipEventStack = (e /*SIPml.Stack.Event*/) => {
 	}
 };
 // Callback function for SIP sessions (INVITE, REGISTER, MESSAGE...)
-const onSipEventSession = (e /* SIPml.Session.Event */) => {
+function onSipEventSession(e /* SIPml.Session.Event */) {
 	// tsk_utils_log_info('==session event = ' + e.type);
 	console.log('Sip Event Occured', e);
 	switch (e.type) {
@@ -420,7 +425,7 @@ const onSipEventSession = (e /* SIPml.Session.Event */) => {
 		default:
 			break;
 	}
-};
+}
 
 //if stack stopped due to network change
 export const restartStack = () => {

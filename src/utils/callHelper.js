@@ -70,7 +70,7 @@ export const stopRingbackTone = () => {
 
 export const startTranscription = UID => {
 	console.log('STARTING TRANSCRIPTION');
-	eventSource = new EventSource(`34.217.60.9${UID}`);
+	eventSource = new EventSource(`http://34.217.60.9:5000/events?${UID}`);
 	eventSource.addEventListener('/events?' + UID, e => {
 		if (e && e.data) {
 			let response = e.data.trim();
@@ -98,7 +98,7 @@ export const startTranscription = UID => {
 				} else {
 				}
 			} else {
-				//only transcription is coming
+				console.log(e.data.trim());
 			}
 		}
 	});

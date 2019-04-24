@@ -23,7 +23,7 @@ export default class CurrentCallConversation extends Component {
 					<Message left>Let's play pubg tonight at 9 PM</Message>
 					<Message>Yeah Sure</Message>
 					<Message>
-						We'll play Snahok with our squad and will go to pai nan
+						We'll play Senhok with our squad and will go to pai nan
 					</Message>
 					<Message left>Sounds cool</Message>
 					<Message>Today we'll definately win the chicken dinner</Message>

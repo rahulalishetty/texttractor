@@ -4,7 +4,7 @@ import CallTable from './Components/CallTable';
 import CallScreen from './Components/CallScreen';
 import CallDetails from './Components/CallDetails';
 import './App.css';
-import { sipRegister } from './utils/sipUtils';
+import { initializeSip, sipRegister, sipHangup } from './utils/sipUtils';
 import axios from './axios-firebase';
 
 class App extends Component {
@@ -17,6 +17,7 @@ class App extends Component {
 			showModal: false,
 			contacts: null
 		};
+		initializeSip();
 		sipRegister();
 	}
 	componentDidMount() {
@@ -60,6 +61,7 @@ class App extends Component {
 
 	endCall = () => {
 		this.setState({ onGoingCall: false });
+		sipHangup();
 	};
 
 	isOnGoingCall = () => {

@@ -4,8 +4,12 @@ import CurrentCallConversation from './CurrentCallConversation';
 import PreviousCallDetails from './PreviousCallDetails';
 import Timeline from './Timeline';
 import PropTypes from 'prop-types';
-
+import { sipCall } from '../utils/sipUtils';
 export default class CallDetails extends Component {
+	constructor(props) {
+		super(props);
+		sipCall('+18558647776');
+	}
 	isOnGoingCall = onGoingCall => {
 		if (onGoingCall) return <Timeline />;
 		else return <PreviousCallDetails />;
