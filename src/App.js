@@ -5,6 +5,7 @@ import CallDetails from './Components/CallDetails';
 import { connect } from 'react-redux';
 import * as actionTypes from './store/actions';
 import { initializeSip, sipRegister } from './utils/sipUtils';
+import { Route } from 'react-router-dom';
 
 class App extends Component {
 	constructor(props) {
@@ -14,22 +15,7 @@ class App extends Component {
 	}
 
 	render() {
-		let show = null;
-		if (this.props.call === null) {
-			show = (
-				<CallTable
-					makeCall={this.makeCall}
-					addNewContact={this.addNewContact}
-				/>
-			);
-		} else {
-			show = (
-				<CallDetails
-					onGoingCall={this.props.onGoingCall}
-					callerName={this.props.call.name}
-				/>
-			);
-		}
+		console.log(this.props.onGoingCall);
 		return (
 			<div className='AppRoot'>
 				<Header
@@ -39,7 +25,8 @@ class App extends Component {
 					endCall={this.props.endCall}
 					goToHomePage={this.props.goToHomePage}
 				/>
-				{show}
+				<Route exact path='/' component={CallTable} />
+				<Route path='/call' component={CallDetails} />
 			</div>
 		);
 	}
@@ -49,7 +36,8 @@ const mapStateToProps = state => {
 	return {
 		call: state.call,
 		onGoingCall: state.onGoingCall,
-		phoneNumber: state.phoneNumber
+		phoneNumber: state.phoneNumber,
+		callerName: state.callerName
 	};
 };
 

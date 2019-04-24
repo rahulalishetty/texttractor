@@ -6,7 +6,8 @@ const initialState = {
 	contacts: null,
 	onGoingCall: false,
 	phoneNumber: null,
-	showModal: false
+	showModal: false,
+	callerName: null
 };
 
 const reducer = (state = initialState, action) => {
@@ -22,7 +23,8 @@ const reducer = (state = initialState, action) => {
 				...state,
 				call: action.payload,
 				onGoingCall: true,
-				phoneNumber: action.payload.phone
+				phoneNumber: action.payload.phone,
+				callerName: action.payload.name
 			};
 		case actionTypes.ADD_NEW_CONTACT:
 			return {
@@ -30,7 +32,7 @@ const reducer = (state = initialState, action) => {
 				contacts: action.payload
 			};
 		case actionTypes.GOTO_HOME:
-			console.log('go home');
+			sipHangup();
 			return {
 				...state,
 				call: null,

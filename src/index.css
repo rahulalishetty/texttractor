@@ -5,6 +5,10 @@ body {
 	font-weight: 400;
 	background-color: #f0f3f4;
 	font-size: 13px;
+	width: 100%;
+	border: 0;
+	height: 100vh;
+	overflow: hidden;
 }
 
 code {

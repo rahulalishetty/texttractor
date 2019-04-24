@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import '../less/Timeline.css';
 import TimelineCard from './TimelineCard';
+import { connect } from 'react-redux';
+import * as actionTypes from '../store/actions';
 
-export default class Timeline extends Component {
-	componentDidMount() {
-		this.refs.timeline.scrollTop = this.refs.timeline.scrollHeight;
+class Timeline extends Component {
+	componentWillUnmount() {
+		this.props.endCall();
 	}
-
 	render() {
 		return (
 			<div className='TimelineRoot' ref='timeline'>
@@ -35,3 +36,21 @@ export default class Timeline extends Component {
 		);
 	}
 }
+
+const mapDispatchToProps = dispatch => {
+	return {
+		endCall: () => dispatch({ type: actionTypes.END_CALL }),
+		placeCall: call => dispatch({ type: actionTypes.PLACE_CALL, payload: call })
+	};
+};
+
+const mapStateToProps = state => {
+	return {
+		call: state.call
+	};
+};
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Timeline);

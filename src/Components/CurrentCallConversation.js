@@ -8,6 +8,7 @@ export default class CurrentCallConversation extends Component {
 		this.refs.chat.scrollTop = this.refs.chat.scrollHeight;
 	}
 	render() {
+		console.log('caller', this.props.callerName);
 		return (
 			<div className='CurrentCallConversationRoot'>
 				<ChatHead>{this.props.callerName}</ChatHead>

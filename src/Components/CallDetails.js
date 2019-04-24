@@ -5,7 +5,9 @@ import PreviousCallDetails from './PreviousCallDetails';
 import Timeline from './Timeline';
 import PropTypes from 'prop-types';
 import { sipCall } from '../utils/sipUtils';
-export default class CallDetails extends Component {
+import { connect } from 'react-redux';
+
+class CallDetails extends Component {
 	constructor(props) {
 		super(props);
 		sipCall('+18558647776');
@@ -15,6 +17,7 @@ export default class CallDetails extends Component {
 		else return <PreviousCallDetails />;
 	};
 	render() {
+		console.log(this.props.onGoingCall);
 		return (
 			<div className='callDetailsRoot'>
 				{this.isOnGoingCall(this.props.onGoingCall)}
@@ -33,3 +36,13 @@ CallDetails.defaultProps = {
 	onGoingCall: true,
 	callerName: 'Unknown'
 };
+
+const mapStateToProps = state => {
+	return {
+		onGoingCall: state.onGoingCall,
+		phoneNumber: state.phoneNumber,
+		callerName: state.callerName
+	};
+};
+
+export default connect(mapStateToProps)(CallDetails);
