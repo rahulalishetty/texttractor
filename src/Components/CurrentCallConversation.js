@@ -10,7 +10,7 @@ export default class CurrentCallConversation extends Component {
 	render() {
 		return (
 			<div className='CurrentCallConversationRoot'>
-				<ChatHead>{this.props.personName}</ChatHead>
+				<ChatHead>{this.props.callerName}</ChatHead>
 				<div className='chat' ref='chat'>
 					<Message>Hello Parikshith</Message>
 					<Message left>Hi Rahul</Message>
@@ -22,7 +22,15 @@ export default class CurrentCallConversation extends Component {
 					<Message left>Let's play pubg tonight at 9 PM</Message>
 					<Message>Yeah Sure</Message>
 					<Message>
-						We'll play Snahok with our squad and will go to pai nan
+						We'll play Senhok with our squad and will go to pai nan
+					</Message>
+					<Message left>Sounds cool</Message>
+					<Message>Today we'll definately win the chicken dinner</Message>
+					<Message left>
+						Yo Bro
+						<span role='img' aria-label='Yo'>
+							&#129304;
+						</span>
 					</Message>
 					<Message left>Sounds cool</Message>
 					<Message>Today we'll definately win the chicken dinner</Message>
