@@ -1,17 +1,8 @@
-<<<<<<< HEAD
 import { splitTranscript } from "./splitTranscript";
 import { store } from "../index";
 import * as actionTypes from "../store/actions";
 
 const ringtone = document.getElementById("ringtone");
-=======
-import { splitTranscript } from './SplitTranscript';
-import { connect } from 'react-redux';
-import * as actionTypes from '../store/actions';
-import { store } from '../index';
-
-const ringtone = document.getElementById('ringtone');
->>>>>>> origin/dev-parikshith
 let eventSource;
 
 export const isDate = value => {
@@ -82,7 +73,6 @@ export const stopRingbackTone = () => {
 };
 
 export const startTranscription = UID => {
-<<<<<<< HEAD
   console.log("STARTING TRANSCRIPTION");
   eventSource = new EventSource(`http://34.217.60.9:5000/events?${UID}`);
   eventSource.addEventListener("/events?" + UID, e => {
@@ -109,6 +99,10 @@ export const startTranscription = UID => {
             rawSummary === "{}" ? "[]" : JSON.parse(rawSummary);
 
           console.log("Summary Received", summaryResponse);
+          store.dispatch({
+            type: actionTypes.STORE_SUMMARY,
+            payload: summaryResponse
+          });
         } else {
         }
       } else {
@@ -121,44 +115,6 @@ export const startTranscription = UID => {
       }
     }
   });
-=======
-	console.log('STARTING TRANSCRIPTION');
-	eventSource = new EventSource(`http://34.217.60.9:5000/events?${UID}`);
-	eventSource.addEventListener('/events?' + UID, e => {
-		if (e && e.data) {
-			let response = e.data.trim();
-			if (response.includes('END_OF_TRANSCRIPTION')) {
-				console.log('Ending');
-				console.log('closed');
-				eventSource.close();
-
-				let finalTranscriptionWithSummary = response.split(
-					'END_OF_TRANSCRIPTION'
-				);
-				console.log(finalTranscriptionWithSummary[0]);
-				let transcriptionResponse = finalTranscriptionWithSummary[0]
-					? finalTranscriptionWithSummary[0].trim()
-					: '';
-				if (
-					finalTranscriptionWithSummary.length > 1 &&
-					finalTranscriptionWithSummary[1]
-				) {
-					let rawSummary = finalTranscriptionWithSummary[1].trim();
-					let summaryResponse =
-						rawSummary === '{}' ? '[]' : JSON.parse(rawSummary);
-
-					console.log('Summary Received', summaryResponse);
-				} else {
-				}
-			} else {
-				store.dispatch({
-					type: actionTypes.STORE_TRANSCRIPTION,
-					payload: splitTranscript(e.data.trim())
-				});
-			}
-		}
-	});
->>>>>>> origin/dev-parikshith
 };
 
 export const isBusy = sipResponseCode => {
