@@ -16,7 +16,7 @@ export default class Header extends Component {
 					<div className='endCallParent'>
 						<CallEnd className='endCall' onClick={this.props.endCall} />
 					</div>
-					<p className='callDuration'>{this.props.duration}</p>
+					<p className='callDuration'>Duration: {this.props.duration}</p>
 				</div>
 			);
 		else

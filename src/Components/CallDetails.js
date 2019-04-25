@@ -17,31 +17,34 @@ class CallDetails extends Component {
 		else return <PreviousCallDetails />;
 	};
 	render() {
-		console.log(this.props.onGoingCall);
 		return (
 			<div className='callDetailsRoot'>
 				{this.isOnGoingCall(this.props.onGoingCall)}
-				<CurrentCallConversation callerName={this.props.callerName} />
+				<CurrentCallConversation
+					callerName={this.props.callerName}
+					transcript={this.props.transcript}
+				/>
 			</div>
 		);
 	}
 }
 
-CallDetails.propTypes = {
-	onGoingCall: PropTypes.bool,
-	callerName: PropTypes.string
-};
+// CallDetails.propTypes = {
+// 	onGoingCall: PropTypes.bool,
+// 	callerName: PropTypes.string
+// };
 
-CallDetails.defaultProps = {
-	onGoingCall: true,
-	callerName: 'Unknown'
-};
+// CallDetails.defaultProps = {
+// 	onGoingCall: true,
+// 	callerName: 'Unknown'
+// };
 
 const mapStateToProps = state => {
 	return {
 		onGoingCall: state.onGoingCall,
 		phoneNumber: state.phoneNumber,
-		callerName: state.callerName
+		callerName: state.callerName,
+		transcript: state.transcript
 	};
 };
 

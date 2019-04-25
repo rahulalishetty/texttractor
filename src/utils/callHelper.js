@@ -1,3 +1,8 @@
+import { splitTranscript } from './SplitTranscript';
+import { connect } from 'react-redux';
+import * as actionTypes from '../store/actions';
+import { store } from '../index';
+
 const ringtone = document.getElementById('ringtone');
 let eventSource;
 
@@ -82,7 +87,7 @@ export const startTranscription = UID => {
 				let finalTranscriptionWithSummary = response.split(
 					'END_OF_TRANSCRIPTION'
 				);
-				console.log(finalTranscriptionWithSummary);
+				console.log(finalTranscriptionWithSummary[0]);
 				let transcriptionResponse = finalTranscriptionWithSummary[0]
 					? finalTranscriptionWithSummary[0].trim()
 					: '';
@@ -98,7 +103,10 @@ export const startTranscription = UID => {
 				} else {
 				}
 			} else {
-				console.log(e.data.trim());
+				store.dispatch({
+					type: actionTypes.STORE_TRANSCRIPTION,
+					payload: splitTranscript(e.data.trim())
+				});
 			}
 		}
 	});

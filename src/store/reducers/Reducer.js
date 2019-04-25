@@ -7,7 +7,8 @@ const initialState = {
 	onGoingCall: false,
 	phoneNumber: null,
 	showModal: false,
-	callerName: null
+	callerName: null,
+	splitTranscription: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -43,6 +44,11 @@ const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				onGoingCall: false
+			};
+		case actionTypes.STORE_TRANSCRIPTION:
+			return {
+				...state,
+				transcript: action.payload
 			};
 		default:
 			return state;

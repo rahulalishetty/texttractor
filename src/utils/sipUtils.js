@@ -13,6 +13,7 @@ import {
 	generateUID,
 	startTranscription
 } from './callHelper';
+
 let oSipStack,
 	oSipSessionRegister,
 	oSipSessionCall,

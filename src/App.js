@@ -15,7 +15,6 @@ class App extends Component {
 	}
 
 	render() {
-		console.log(this.props.onGoingCall);
 		return (
 			<div className='AppRoot'>
 				<Header

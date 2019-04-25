@@ -14,7 +14,6 @@ export default function CallerList(props) {
 						<th style={{ width: '15%' }}>Type</th>
 					</tr>
 					{props.contacts.map(contact => {
-						console.log(contact);
 						return (
 							<tr key={contact.phone} className='Row'>
 								<td style={{ width: '25%' }}>{contact.name}</td>
