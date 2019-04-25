@@ -87,7 +87,11 @@ export const startTranscription = UID => {
 				let finalTranscriptionWithSummary = response.split(
 					'END_OF_TRANSCRIPTION'
 				);
-				console.log(finalTranscriptionWithSummary[0]);
+				store.dispatch({
+					type: actionTypes.STORE_TRANSCRIPTION,
+					payload: finalTranscriptionWithSummary[0].trim()
+				});
+				console.log('final:::', finalTranscriptionWithSummary[0]);
 				let transcriptionResponse = finalTranscriptionWithSummary[0]
 					? finalTranscriptionWithSummary[0].trim()
 					: '';
@@ -105,7 +109,7 @@ export const startTranscription = UID => {
 			} else {
 				store.dispatch({
 					type: actionTypes.STORE_TRANSCRIPTION,
-					payload: splitTranscript(e.data.trim())
+					payload: e.data.trim()
 				});
 			}
 		}

@@ -16,6 +16,12 @@ export default class Message extends Component {
 					<span className='Message'>{this.props.children}</span>
 				</div>
 			);
+		} else if (this.props.speaking) {
+			return (
+				<div className='MessageRoot' style={this.styleLeft}>
+					<span className='Message'>{this.props.children}</span>
+				</div>
+			);
 		}
 		return (
 			<div className='MessageRoot' style={this.styleRight}>
