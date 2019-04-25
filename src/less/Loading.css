@@ -1,0 +1,40 @@
+.dot {
+	width: 5px;
+	height: 5px;
+	background: #22303e;
+	display: inline-block;
+	border-radius: 50%;
+	margin: 0px 2.5px;
+	position: relative;
+	animation: jump 1s infinite;
+}
+
+.dots-cont .dot-1 {
+	-webkit-animation-delay: 100ms;
+	animation-delay: 100ms;
+	background-color: red;
+}
+
+.dots-cont .dot-2 {
+	-webkit-animation-delay: 200ms;
+	animation-delay: 200ms;
+	background-color: green;
+}
+
+.dots-cont .dot-3 {
+	-webkit-animation-delay: 300ms;
+	animation-delay: 300ms;
+	background-color: blue;
+}
+
+@keyframes jump {
+	0% {
+		bottom: 0px;
+	}
+	20% {
+		bottom: 5px;
+	}
+	40% {
+		bottom: 0px;
+	}
+}

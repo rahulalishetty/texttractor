@@ -1,10 +1,19 @@
 .CurrentCallConversationRoot {
+<<<<<<< HEAD
   display: inline;
   float: left;
   width: 50%;
   margin: 0;
   border: 0;
   overflow: auto;
+=======
+	display: inline;
+	float: left;
+	width: 50%;
+	margin: 0;
+	border: 0;
+	overflow: auto;
+>>>>>>> origin/dev-parikshith
 }
 
 .chat {
