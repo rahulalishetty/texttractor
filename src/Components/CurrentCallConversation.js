@@ -22,11 +22,21 @@ export default class CurrentCallConversation extends Component {
   }
 
   persistCallHistory = () => {
-    console.log(this.props.call);
+    console.log("in persist", this.props.call);
     let caller = this.props.call;
+    let today = new Date();
+    let date =
+      today.getDate() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getFullYear();
+    var time = today.getHours() + ":" + today.getMinutes();
     let currentCallDetails = {
       transcript: this.props.transcript,
-      summary: this.props.summary
+      summary: this.props.summary,
+      date: date,
+      time: time
     };
     let callerId = caller.key;
     delete caller.key;
@@ -46,7 +56,7 @@ export default class CurrentCallConversation extends Component {
   render() {
     console.log(this.state.transcript);
     console.log("summary", this.props.summary);
-    if (this.props.summary) {
+    if (this.props.summary && this.props.call) {
       this.persistCallHistory();
     }
     return (

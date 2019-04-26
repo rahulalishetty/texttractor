@@ -38,7 +38,8 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         call: null,
-        onGoingCall: false
+        onGoingCall: false,
+        summary: null
       };
     case actionTypes.END_CALL:
       sipHangup();
