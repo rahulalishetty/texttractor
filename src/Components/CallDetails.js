@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../less/CallDetails.css';
 import CurrentCallConversation from './CurrentCallConversation';
-import PreviousCallDetails from './PreviousCallDetails';
+import IntentSummary from './IntentSummary';
 import Timeline from './Timeline';
 import PropTypes from 'prop-types';
 import { sipCall } from '../utils/sipUtils';
@@ -16,7 +16,7 @@ class CallDetails extends Component {
 	render() {
 		let intents = null;
 		if (this.props.onGoingCall) intents = <Timeline call={this.props.call} />;
-		else intents = <PreviousCallDetails summary={this.props.summary} />;
+		else intents = <IntentSummary summary={this.props.summary} />;
 		return (
 			<div className='callDetailsRoot'>
 				{intents}
