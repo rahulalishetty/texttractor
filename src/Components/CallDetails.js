@@ -12,14 +12,14 @@ class CallDetails extends Component {
 		super(props);
 		sipCall('+18558647776');
 	}
-	isOnGoingCall = onGoingCall => {
-		if (onGoingCall) return <Timeline />;
-		else return <PreviousCallDetails />;
-	};
+
 	render() {
+		let intents = null;
+		if (this.props.onGoingCall) intents = <Timeline call={this.props.call} />;
+		else intents = <PreviousCallDetails summary={this.props.summary} />;
 		return (
 			<div className='callDetailsRoot'>
-				{this.isOnGoingCall(this.props.onGoingCall)}
+				{intents}
 				<CurrentCallConversation
 					callerName={this.props.callerName}
 					transcript={this.props.transcript}

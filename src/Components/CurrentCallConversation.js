@@ -78,7 +78,7 @@ export default class CurrentCallConversation extends Component {
 					);
 				} else if (c.includes(TRANSCRIPT_DELIMETERS.CUSTOMER)) {
 					return (
-						<Message left>
+						<Message customerName={this.props.callerName} left>
 							{c.replace(TRANSCRIPT_DELIMETERS.CUSTOMER, '')}
 						</Message>
 					);

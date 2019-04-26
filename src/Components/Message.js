@@ -12,7 +12,9 @@ export default class Message extends Component {
 		if (this.props.left) {
 			return (
 				<div className='MessageRoot' style={this.styleLeft}>
-					<span className='Avatar'>RA</span>
+					<span className='Avatar'>
+						{this.props.customerName.substring(0, 1).toUpperCase()}
+					</span>
 					<span className='Message'>{this.props.children}</span>
 				</div>
 			);
@@ -26,7 +28,7 @@ export default class Message extends Component {
 		return (
 			<div className='MessageRoot' style={this.styleRight}>
 				<span className='Message'>{this.props.children}</span>
-				<span className='Avatar'>PK</span>
+				<span className='Avatar'>A</span>
 			</div>
 		);
 	}
