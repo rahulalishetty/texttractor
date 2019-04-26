@@ -20,9 +20,9 @@
 	flex-grow: 1;
 }
 .Note {
-	margin-left: 2%;
+	margin-left: 15px;
 	border-left: 2px solid black;
-	padding-left: 3%;
+	padding-left: 10px;
 	padding-bottom: 10px;
 	overflow: hidden;
 	transition: font-size 0.1s;

@@ -104,8 +104,8 @@ export const startTranscription = UID => {
 						type: actionTypes.STORE_SUMMARY,
 						payload: summaryResponse
 					});
-					console.log('Intent: ', summaryResponse[0].intent);
-					console.log('Summary: ', summaryResponse[0].summary);
+					console.log('Intent: ', summaryResponse);
+					// console.log('Summary: ', summaryResponse[0].summary);
 				} else {
 				}
 			} else {

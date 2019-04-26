@@ -12,9 +12,7 @@ export default class CurrentCallConversation extends Component {
 		transcript: [],
 		summary: null
 	};
-	componentDidMount() {
-		this.refs.chat.scrollTop = this.refs.chat.scrollHeight;
-	}
+
 	static getDerivedStateFromProps(nextProps, prevState) {
 		if (nextProps.transcript !== prevState.transcript) {
 			console.log('Transcript updating', nextProps.transcript);
@@ -54,7 +52,9 @@ export default class CurrentCallConversation extends Component {
 			caller
 		);
 	};
-
+	componentDidUpdate() {
+		this.refs.chat.scrollTop = this.refs.chat.scrollHeight;
+	}
 	render() {
 		let chat = null;
 		if (this.props.summary && this.props.call) {
@@ -86,6 +86,7 @@ export default class CurrentCallConversation extends Component {
 				return null;
 			});
 		}
+
 		return (
 			<div className='CurrentCallConversationRoot'>
 				<ChatHead>{this.props.callerName}</ChatHead>
