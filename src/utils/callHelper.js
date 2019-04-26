@@ -1,7 +1,5 @@
-import { splitTranscript } from './SplitTranscript';
-import { connect } from 'react-redux';
-import * as actionTypes from '../store/actions';
 import { store } from '../index';
+import * as actionTypes from '../store/actions';
 
 const ringtone = document.getElementById('ringtone');
 let eventSource;
@@ -102,7 +100,10 @@ export const startTranscription = UID => {
 					let rawSummary = finalTranscriptionWithSummary[1].trim();
 					let summaryResponse =
 						rawSummary === '{}' ? '[]' : JSON.parse(rawSummary);
-
+					store.dispatch({
+						type: actionTypes.STORE_SUMMARY,
+						payload: summaryResponse
+					});
 					console.log('Intent: ', summaryResponse[0].intent);
 					console.log('Summary: ', summaryResponse[0].summary);
 				} else {

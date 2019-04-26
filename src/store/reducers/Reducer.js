@@ -8,7 +8,8 @@ const initialState = {
 	phoneNumber: null,
 	showModal: false,
 	callerName: null,
-	splitTranscription: []
+	transcript: null,
+	summary: null
 };
 
 const reducer = (state = initialState, action) => {
@@ -37,7 +38,8 @@ const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				call: null,
-				onGoingCall: false
+				onGoingCall: false,
+				summary: null
 			};
 		case actionTypes.END_CALL:
 			sipHangup();
@@ -46,9 +48,16 @@ const reducer = (state = initialState, action) => {
 				onGoingCall: false
 			};
 		case actionTypes.STORE_TRANSCRIPTION:
+			console.log('in store', action.payload);
 			return {
 				...state,
 				transcript: action.payload
+			};
+		case actionTypes.STORE_SUMMARY:
+			console.log('store summary', action.payload);
+			return {
+				...state,
+				summary: action.payload
 			};
 		default:
 			return state;

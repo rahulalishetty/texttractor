@@ -1,12 +1,12 @@
 .TimelineRoot {
-	height: 90vh;
-	display: inline;
-	float: left;
-	overflow: auto;
-	width: 50%;
-	margin: 0;
-	border: 0;
-	padding-top: 20px;
-	box-sizing: border-box;
-	border-right: 1px solid white;
+  height: 90vh;
+  display: inline;
+  float: left;
+  overflow: auto;
+  width: 50%;
+  margin: 0;
+  border: 0;
+  padding-top: 20px;
+  box-sizing: border-box;
+  border-right: 1px solid white;
 }
