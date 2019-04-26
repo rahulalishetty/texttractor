@@ -91,7 +91,7 @@ export const startTranscription = UID => {
 					type: actionTypes.STORE_TRANSCRIPTION,
 					payload: finalTranscriptionWithSummary[0].trim()
 				});
-				console.log('final:::', finalTranscriptionWithSummary[0]);
+				// console.log('final:::', finalTranscriptionWithSummary[0]);
 				let transcriptionResponse = finalTranscriptionWithSummary[0]
 					? finalTranscriptionWithSummary[0].trim()
 					: '';
@@ -103,7 +103,8 @@ export const startTranscription = UID => {
 					let summaryResponse =
 						rawSummary === '{}' ? '[]' : JSON.parse(rawSummary);
 
-					console.log('Summary Received', summaryResponse);
+					console.log('Intent: ', summaryResponse[0].intent);
+					console.log('Summary: ', summaryResponse[0].summary);
 				} else {
 				}
 			} else {
