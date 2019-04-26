@@ -11,7 +11,8 @@ import axios from '../axios-firebase';
 
 class CallTable extends Component {
 	state = {
-		showModal: false
+		showModal: false,
+		contacts: null
 	};
 
 	componentDidMount() {
@@ -30,7 +31,8 @@ class CallTable extends Component {
 				});
 				console.log(fetchedRowsWithKey);
 				// fetchedRows = Object.values(fetchedRows);
-				this.props.addFetchedContactsToState(fetchedRowsWithKey);
+				// this.props.addFetchedContactsToState(fetchedRowsWithKey);
+				this.setState({ contacts: fetchedRowsWithKey });
 			})
 			.catch(error => console.log(error));
 	}
@@ -45,15 +47,15 @@ class CallTable extends Component {
 	};
 
 	addNewContact = newContact => {
-		let updatedContacts = this.props.contacts;
+		let updatedContacts = this.state.contacts;
 		let contactAlreadyExist = false;
-		let phoneRegex = '/^d{10}$/';
 		updatedContacts.map(eachContact => {
 			if (eachContact.phone === newContact.phone) {
 				console.log('contact already exists');
 				contactAlreadyExist = true;
 			}
 		});
+
 		if (!contactAlreadyExist) {
 			this.addNewContactWithKeyToState(newContact, updatedContacts);
 		} else {
@@ -79,7 +81,8 @@ class CallTable extends Component {
 							}
 						});
 						updatedContacts.push(newRow);
-						this.props.addNewContactToState(updatedContacts);
+						// this.props.addNewContactToState(updatedContacts);
+						this.setState({ contacts: updatedContacts });
 					})
 					.catch(error => console.log(error));
 			})
@@ -88,11 +91,11 @@ class CallTable extends Component {
 	render() {
 		let callerTable = <Spinner />;
 
-		if (this.props.contacts) {
+		if (this.state.contacts) {
 			callerTable = (
 				<div className='Wrapper'>
 					<CallerList
-						contacts={this.props.contacts}
+						contacts={this.state.contacts}
 						placeCall={this.props.placeCall}
 					/>
 					<Add
@@ -114,7 +117,10 @@ class CallTable extends Component {
 		return (
 			<div className='CallTable'>
 				<Modal show={this.state.showModal} closeModal={this.closeModal}>
-					<NewCall addNewContact={this.addNewContact} />
+					<NewCall
+						addNewContact={this.addNewContact}
+						closeModal={this.closeModal}
+					/>
 				</Modal>
 				<p className='CallQueue'>Call Queue</p>
 				{callerTable}
@@ -123,24 +129,20 @@ class CallTable extends Component {
 	}
 }
 
-const mapStateToProps = state => {
-	return {
-		contacts: state.contacts
-	};
-};
+// const mapStateToProps = state => {
+//   return {
+//     contacts: state.contacts
+//   };
+// };
 
 const mapDispatchToProps = dispatch => {
 	return {
-		addFetchedContactsToState: contacts =>
-			dispatch({ type: actionTypes.ADD_CONTACTS, payload: contacts }),
 		placeCall: contact =>
-			dispatch({ type: actionTypes.PLACE_CALL, payload: contact }),
-		addNewContactToState: contacts =>
-			dispatch({ type: actionTypes.ADD_NEW_CONTACT, payload: contacts })
+			dispatch({ type: actionTypes.PLACE_CALL, payload: contact })
 	};
 };
 
 export default connect(
-	mapStateToProps,
+	null,
 	mapDispatchToProps
 )(CallTable);

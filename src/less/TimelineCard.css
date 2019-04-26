@@ -27,7 +27,7 @@
 	overflow: hidden;
 	transition: font-size 0.1s;
 }
-.time {
+.duration {
 	color: grey;
 	font-size: 0.8rem;
 }

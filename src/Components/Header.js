@@ -3,11 +3,12 @@ import '../less/Header.css';
 import logo from '../images/zemoso_logo.png';
 import CallEnd from '@material-ui/icons/CallEnd';
 import { Link } from 'react-router-dom';
+import Timer from 'react-simple-timer';
 
 export default class Header extends Component {
 	state = {
-		seconds: 0,
-		timer: null
+		play: true,
+		pause: false
 	};
 
 	startTimer = start => {
@@ -17,7 +18,14 @@ export default class Header extends Component {
 		this.setState({ seconds: new Date() - start });
 	};
 	callHangUp = () => {
-		clearInterval(this.timer);
+		this.setState({ play: false, pause: true });
+		console.log(
+			'duration: ',
+			document.getElementsByClassName('time')[0].innerHTML
+		);
+		this.props.setDuration(
+			document.getElementsByClassName('time')[0].innerHTML
+		);
 		this.props.endCall();
 	};
 	render() {
@@ -31,7 +39,16 @@ export default class Header extends Component {
 					<div className='endCallParent'>
 						<CallEnd className='endCall' onClick={this.callHangUp} />
 					</div>
-					<p className='callDuration'>Duration: {this.state.seconds}</p>
+					<p className='callDuration'>
+						<span style={{ display: 'inline-block' }}>
+							<span style={{ display: 'inline', float: 'left' }}>
+								Duration:&nbsp;
+							</span>
+							<span style={{ display: 'inline', float: 'left' }}>
+								<Timer {...this.state} />
+							</span>
+						</span>
+					</p>
 				</div>
 			);
 		} else {

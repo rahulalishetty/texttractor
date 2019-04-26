@@ -23,6 +23,7 @@ class App extends Component {
 					duration='02:23'
 					endCall={this.props.endCall}
 					goToHomePage={this.props.goToHomePage}
+					setDuration={this.props.setDuration}
 				/>
 				<Route exact path='/' component={CallTable} />
 				<Route path='/call' component={CallDetails} />
@@ -43,7 +44,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
 	return {
 		goToHomePage: () => dispatch({ type: actionTypes.GOTO_HOME }),
-		endCall: () => dispatch({ type: actionTypes.END_CALL })
+		endCall: () => dispatch({ type: actionTypes.END_CALL }),
+		setDuration: duration =>
+			dispatch({ type: actionTypes.SET_DURATION, payload: duration })
 	};
 };
 

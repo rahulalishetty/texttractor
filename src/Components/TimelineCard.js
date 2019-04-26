@@ -24,7 +24,7 @@ export default class TimelineCard extends Component {
 					/>
 					<div className='Date'>
 						{this.props.date}{' '}
-						<span className='time'>
+						<span className='duration'>
 							{this.props.time} (Duration: {this.props.duration})
 						</span>
 					</div>

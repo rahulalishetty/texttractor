@@ -3,23 +3,16 @@ import { sipHangup } from '../../utils/sipUtils';
 
 const initialState = {
 	call: null,
-	contacts: null,
 	onGoingCall: false,
 	phoneNumber: null,
-	showModal: false,
 	callerName: null,
 	transcript: null,
-	summary: null
+	summary: null,
+	duration: null
 };
 
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
-		case actionTypes.ADD_CONTACTS:
-			console.log('contacts', action.payload);
-			return {
-				...state,
-				contacts: action.payload
-			};
 		case actionTypes.PLACE_CALL:
 			return {
 				...state,
@@ -28,18 +21,14 @@ const reducer = (state = initialState, action) => {
 				phoneNumber: action.payload.phone,
 				callerName: action.payload.name
 			};
-		case actionTypes.ADD_NEW_CONTACT:
-			return {
-				...state,
-				contacts: action.payload
-			};
 		case actionTypes.GOTO_HOME:
 			sipHangup();
 			return {
 				...state,
 				call: null,
 				onGoingCall: false,
-				summary: null
+				summary: null,
+				duration: null
 			};
 		case actionTypes.END_CALL:
 			sipHangup();
@@ -58,6 +47,12 @@ const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				summary: action.payload
+			};
+		case actionTypes.SET_DURATION:
+			console.log('reducer', action.payload);
+			return {
+				...state,
+				duration: action.payload
 			};
 		default:
 			return state;

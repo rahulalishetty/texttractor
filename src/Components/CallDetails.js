@@ -10,11 +10,12 @@ import { connect } from 'react-redux';
 class CallDetails extends Component {
 	constructor(props) {
 		super(props);
-		sipCall('+18558647776');
+		sipCall('+12143299664');
 	}
 
 	render() {
 		let intents = null;
+		console.log('calldetails duration', this.props.duration);
 		if (this.props.onGoingCall) intents = <Timeline call={this.props.call} />;
 		else intents = <IntentSummary summary={this.props.summary} />;
 		return (
@@ -25,6 +26,7 @@ class CallDetails extends Component {
 					transcript={this.props.transcript}
 					summary={this.props.summary}
 					call={this.props.call}
+					duration={this.props.duration}
 				/>
 			</div>
 		);
@@ -48,7 +50,8 @@ const mapStateToProps = state => {
 		callerName: state.callerName,
 		transcript: state.transcript,
 		summary: state.summary,
-		call: state.call
+		call: state.call,
+		duration: state.duration
 	};
 };
 

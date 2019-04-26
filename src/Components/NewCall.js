@@ -25,10 +25,16 @@ export default class NewCall extends Component {
     let name = this.state.name;
     let reasonToCall = this.state.reasonToCall;
     let phone = this.state.phone;
-    let callHistory = [];
-    console.log(name, reasonToCall, phone);
-    let newContact = { name, reasonToCall, phone, callHistory };
-    this.props.addNewContact(newContact);
+    let phoneRegex = "^[2-9]{2}[0-9]{8}$";
+    if (phone.match(phoneRegex)) {
+      let callHistory = [];
+      console.log(name, reasonToCall, phone);
+      let newContact = { name, reasonToCall, phone, callHistory };
+      this.props.addNewContact(newContact);
+      this.props.closeModal();
+    } else {
+      alert("enter valid phone number");
+    }
   };
 
   render() {

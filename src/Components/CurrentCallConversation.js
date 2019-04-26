@@ -32,11 +32,13 @@ export default class CurrentCallConversation extends Component {
 			'-' +
 			today.getFullYear();
 		var time = today.getHours() + ':' + today.getMinutes();
+		console.log('header duration', this.props.duration);
 		let currentCallDetails = {
 			transcript: this.props.transcript,
 			summary: this.props.summary,
 			date: date,
-			time: time
+			time: time,
+			duration: this.props.duration
 		};
 		let callerId = caller.key;
 		delete caller.key;
