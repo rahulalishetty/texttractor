@@ -49,10 +49,11 @@ export default class CurrentCallConversation extends Component {
 			caller.callHistory.push(currentCallDetails);
 		}
 		console.log(caller);
-		axios.put(
-			'https://texttractive.firebaseio.com/contacts/' + callerId + '.json',
-			caller
-		);
+		if (callerId)
+			axios.put(
+				'https://texttractive.firebaseio.com/contacts/' + callerId + '.json',
+				caller
+			);
 	};
 	componentDidUpdate() {
 		this.refs.chat.scrollTop = this.refs.chat.scrollHeight;

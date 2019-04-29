@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../less/Timeline.css';
 import TimelineCard from './TimelineCard';
 import { connect } from 'react-redux';
+import NoHistory from '../images/noHistory.png';
 import * as actionTypes from '../store/actions';
 import axios from '../axios-firebase';
 

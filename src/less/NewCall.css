@@ -1,33 +1,105 @@
 .Form {
-	margin: 2rem 2rem;
+  /* margin: 0.2rem; */
+  position: relative;
+}
+
+.FormLabel {
+  background-image: linear-gradient(to right, #7dc2d8, rgb(8, 192, 171));
+  margin: 0;
+  height: 1.5rem;
+  padding: 0.5rem;
+  padding-left: 2rem;
+  padding-top: 1rem;
+  font-size: 16px !important;
+  font-weight: 700;
+  color: white;
+  /* font-weight: 700; */
+  /* border-top-left-radius: 12px;
+  border-top-right-radius: 12px; */
 }
 
 .InputForm {
-	margin-top: 2rem;
+  /* margin-top: 2rem; */
+  padding: 1rem;
+  padding-top: 0.5rem;
+  padding-left: 10%;
 }
 
 .InputForm div {
-	width: 100%;
+  width: 100%;
 }
 
 .Label {
-	padding-top: 1rem;
-	padding-right: 1rem;
-	margin: 0;
-	display: inline-block;
-	width: 50%;
+  padding-top: 1rem;
+  padding-right: 1rem;
+  margin: 0;
+  /* display: inline-block; */
+  width: 50%;
+  padding-bottom: 0.3rem;
+  font-size: 13px;
+  font-weight: 400;
 }
 
-.inputField {
-	width: 50%;
+.InputField {
+  width: 90%;
+  height: 1.3rem;
+  border-radius: 0.15rem;
+  border: 0.08rem solid #d9deea;
+  background-color: #eaedf3;
 }
 
 .SaveButton {
-	margin-top: 10%;
-	font-size: 1rem;
-	border-radius: 0.2rem;
-	border: 0;
-	margin-left: 40%;
-	padding: 0.4rem;
-	background-color: #85c1e9;
+  /* margin-top: 10%; */
+  font-size: 1rem;
+  border-radius: 0.2rem;
+  border: 0;
+  padding: 0.4rem;
+  background-color: rgb(8, 192, 171);
+  display: inline-block;
+  padding: 0.4rem;
+  margin-top: 0.6rem;
+  margin-left: 5%;
+  cursor: pointer;
+  color: white;
+  font-size: 13px;
+}
+
+.SaveButton:disabled {
+  background-color: #d2d8da;
+  cursor: not-allowed;
+}
+
+.Close {
+  height: 2rem;
+  width: 2rem;
+  position: absolute;
+  font-size: 1.8rem;
+  top: 0.3rem;
+  right: 0.2rem;
+  vertical-align: middle;
+  font-weight: 400;
+  color: white;
+  cursor: pointer;
+}
+
+.ButtonBar {
+  margin-top: 1rem;
+  border-top: 0.09rem solid #eaedf3;
+  background-color: #eaf1f3;
+  padding: 0;
+  height: 3rem;
+  /* border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px; */
+}
+
+.Cancel {
+  border: 0.05rem solid red;
+  background-color: white;
+  color: red;
+}
+
+.Cancel:hover {
+  border: 0.05rem solid black;
+  background-color: red;
+  color: white;
 }

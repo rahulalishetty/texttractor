@@ -21,7 +21,6 @@ class CallTable extends Component {
 		axios
 			.get('https://texttractive.firebaseio.com/contacts.json')
 			.then(response => {
-				console.log('fetched');
 				fetchedRows = response.data;
 				let fetchedRowsWithKey = [];
 				Object.keys(fetchedRows).map(rowKey => {
@@ -32,12 +31,12 @@ class CallTable extends Component {
 					console.log(fetchedRowsWithKey);
 				});
 				console.log(fetchedRowsWithKey);
-				this.setState({ fetched: true, contacts: fetchedRowsWithKey });
+				// fetchedRows = Object.values(fetchedRows);
+				// this.props.addFetchedContactsToState(fetchedRowsWithKey);
+				this.setState({ contacts: fetchedRowsWithKey, fetched: true });
+				console.log('state set');
 			})
-			.catch(error => {
-				console.log(error);
-				this.setState({ fetched: true });
-			});
+			.catch(error => console.log(error));
 	}
 
 	openModal = () => {
@@ -52,17 +51,21 @@ class CallTable extends Component {
 	addNewContact = newContact => {
 		let updatedContacts = this.state.contacts;
 		let contactAlreadyExist = false;
-		updatedContacts.map(eachContact => {
-			if (eachContact.phone === newContact.phone) {
-				console.log('contact already exists');
-				contactAlreadyExist = true;
-			}
-		});
+		if (updatedContacts) {
+			updatedContacts.map(eachContact => {
+				if (eachContact.phone === newContact.phone) {
+					console.log('contact already exists');
+					contactAlreadyExist = true;
+				}
+			});
+		}
 
 		if (!contactAlreadyExist) {
 			this.addNewContactWithKeyToState(newContact, updatedContacts);
+			return true;
 		} else {
 			alert('contact already exists');
+			return false;
 		}
 	};
 
@@ -93,8 +96,10 @@ class CallTable extends Component {
 	};
 	render() {
 		let callerTable = <Spinner />;
-
+		// let callerTable = null;
+		console.log(this.state.fetched);
 		if (this.state.fetched) {
+			console.log('inside if');
 			callerTable = (
 				<div className='Wrapper'>
 					<CallerList
@@ -123,6 +128,7 @@ class CallTable extends Component {
 					<NewCall
 						addNewContact={this.addNewContact}
 						closeModal={this.closeModal}
+						show={this.state.showModal}
 					/>
 				</Modal>
 				<p className='CallQueue'>Call Queue</p>
