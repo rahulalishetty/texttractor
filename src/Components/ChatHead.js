@@ -6,13 +6,12 @@ export default class ChatHead extends Component {
 		padding: '3%',
 		boxShadow: '0 2px 5px grey',
 		width: '94%'
-		// backgroundColor: '#263238',
-		// color: 'white'
 	};
 	styleChildren = {
 		display: 'inline',
 		float: 'left',
-		textAlign: 'center'
+		textAlign: 'center',
+		fontSize: '1rem'
 	};
 	render() {
 		return (

@@ -97,7 +97,7 @@ export default class CurrentCallConversation extends Component {
 
 		return (
 			<div className='CurrentCallConversationRoot'>
-				<ChatHead>{this.props.callerName}</ChatHead>
+				<ChatHead>Call Transcription</ChatHead>
 				<div className='chat' ref='chat'>
 					{chat}
 					<div style={{ padding: '2%' }}> </div>
