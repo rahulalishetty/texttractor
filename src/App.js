@@ -20,10 +20,10 @@ class App extends Component {
 				<Header
 					callscreen={this.props.onGoingCall}
 					phone={this.props.phoneNumber}
-					duration='02:23'
 					endCall={this.props.endCall}
 					goToHomePage={this.props.goToHomePage}
 					setDuration={this.props.setDuration}
+					startTimer={this.props.startTimer}
 				/>
 				<Route exact path='/' component={CallTable} />
 				<Route path='/call' component={CallDetails} />
@@ -37,7 +37,8 @@ const mapStateToProps = state => {
 		call: state.call,
 		onGoingCall: state.onGoingCall,
 		phoneNumber: state.phoneNumber,
-		callerName: state.callerName
+		callerName: state.callerName,
+		startTimer: state.startTimer
 	};
 };
 

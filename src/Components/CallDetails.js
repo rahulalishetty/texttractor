@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 class CallDetails extends Component {
 	constructor(props) {
 		super(props);
-		sipCall('+12143299664');
+		sipCall('+18558647776');
 	}
 
 	render() {

@@ -4,3 +4,4 @@ export const END_CALL = 'END_CALL';
 export const STORE_TRANSCRIPTION = 'STORE_TRANSCRIPTION';
 export const STORE_SUMMARY = 'STORE_SUMMARY';
 export const SET_DURATION = 'SET_DURATION';
+export const START_TIMER = 'START_TIMER';

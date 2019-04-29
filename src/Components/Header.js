@@ -10,13 +10,11 @@ export default class Header extends Component {
 		play: true,
 		pause: false
 	};
+	inlineStyle = {
+		display: 'inline',
+		float: 'left'
+	};
 
-	startTimer = start => {
-		this.timer = setInterval(() => this.tick(start), 1000);
-	};
-	tick = start => {
-		this.setState({ seconds: new Date() - start });
-	};
 	callHangUp = () => {
 		this.setState({ play: false, pause: true });
 		console.log(
@@ -29,6 +27,19 @@ export default class Header extends Component {
 		this.props.endCall();
 	};
 	render() {
+		let inCallDuration = '00:00';
+		if (this.props.startTimer) {
+			inCallDuration = (
+				<p className='callDuration'>
+					<span style={{ display: 'inline-block' }}>
+						<span style={this.inlineStyle}>Duration:&nbsp;</span>
+						<span style={this.inlineStyle}>
+							<Timer {...this.state} />
+						</span>
+					</span>
+				</p>
+			);
+		}
 		if (this.props.callscreen) {
 			return (
 				<div className='callScreenHeaderRoot'>
@@ -39,16 +50,7 @@ export default class Header extends Component {
 					<div className='endCallParent'>
 						<CallEnd className='endCall' onClick={this.callHangUp} />
 					</div>
-					<p className='callDuration'>
-						<span style={{ display: 'inline-block' }}>
-							<span style={{ display: 'inline', float: 'left' }}>
-								Duration:&nbsp;
-							</span>
-							<span style={{ display: 'inline', float: 'left' }}>
-								<Timer {...this.state} />
-							</span>
-						</span>
-					</p>
+					{inCallDuration}
 				</div>
 			);
 		} else {

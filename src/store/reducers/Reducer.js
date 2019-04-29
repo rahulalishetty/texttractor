@@ -8,7 +8,8 @@ const initialState = {
 	callerName: null,
 	transcript: null,
 	summary: null,
-	duration: null
+	duration: null,
+	startTimer: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -28,13 +29,15 @@ const reducer = (state = initialState, action) => {
 				call: null,
 				onGoingCall: false,
 				summary: null,
-				duration: null
+				duration: null,
+				startTimer: false
 			};
 		case actionTypes.END_CALL:
 			sipHangup();
 			return {
 				...state,
-				onGoingCall: false
+				onGoingCall: false,
+				startTimer: false
 			};
 		case actionTypes.STORE_TRANSCRIPTION:
 			console.log('in store', action.payload);
@@ -53,6 +56,11 @@ const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				duration: action.payload
+			};
+		case actionTypes.START_TIMER:
+			return {
+				...state,
+				startTimer: true
 			};
 		default:
 			return state;

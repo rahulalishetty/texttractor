@@ -73,6 +73,7 @@ export const stopRingbackTone = () => {
 
 export const startTranscription = UID => {
 	console.log('STARTING TRANSCRIPTION');
+	store.dispatch({ type: actionTypes.START_TIMER });
 	eventSource = new EventSource(`http://34.217.60.9:5000/events?${UID}`);
 	eventSource.addEventListener('/events?' + UID, e => {
 		if (e && e.data) {
@@ -81,7 +82,6 @@ export const startTranscription = UID => {
 				console.log('Ending');
 				console.log('closed');
 				eventSource.close();
-
 				let finalTranscriptionWithSummary = response.split(
 					'END_OF_TRANSCRIPTION'
 				);
