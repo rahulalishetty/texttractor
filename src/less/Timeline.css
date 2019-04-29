@@ -10,3 +10,17 @@
   box-sizing: border-box;
   border-right: 1px solid white;
 }
+
+.NoHistory {
+  text-align: center;
+}
+
+.NoHistory img {
+  height: 80%;
+  width: 80%;
+  /* padding-left: 8%; */
+}
+
+.NoHistory p {
+  font-size: 13px;
+}
