@@ -1,62 +1,135 @@
-.Toolbar {
-	height: 4rem;
-	width: 100%;
-	position: fixed;
-	top: 0;
-	left: 0;
-	background-color: #f7f9f9;
-	padding: 0 20px;
-	box-sizing: border-box;
-	z-index: 90;
-	box-shadow: 3px 3px 3px 3px rgba(235, 235, 238, 0.5);
-}
-
-.Logo {
-	margin-top: 0.25rem;
-	width: 5rem;
-	height: 3.5rem;
-	border-radius: 50%;
-	vertical-align: middle;
-}
-
 .callScreenHeaderRoot {
-	display: flex;
-	align-items: center;
-	height: 10vh;
+	height: 6vh;
+	width: 100%;
 	background-color: #263238;
 	color: white;
+	margin: 0;
+	border: 0;
+	padding: 0;
 }
-img {
+.logo {
 	margin-left: 1rem;
-	width: 3.5rem;
-	height: 3.5rem;
+	margin-top: 0.2rem;
+	width: 2rem;
+	height: 2rem;
 	border-radius: 50%;
 	cursor: pointer;
 }
-.connectionStatus {
-	flex-grow: 1;
-	text-align: center;
+.avatarDisplayPicture {
+	margin-top: 0.2rem;
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+	cursor: pointer;
+	vertical-align: middle;
 }
-.endCallParent {
+.personName {
+	margin-right: 1rem;
+	margin-left: 0.5rem;
+}
+.personInfo {
+	padding-left: 0.5rem;
+	/* background-color: #151b1f; */
+}
+.callHead {
+	height: 10vh;
+	width: 100%;
+	margin: 0;
+	border: 0;
+	padding: 0;
+	background-color: rgb(8, 192, 171);
+	display: flex;
+	flex-direction: row;
+}
+.callHead p {
+	margin: 0 0 0 1rem;
+	padding-top: 0.5rem;
+	color: white;
+	font-size: 1rem;
+}
+.callInfo {
 	flex-grow: 1;
-	text-align: center;
+}
+.inlineLeft {
+	display: inline;
+	float: left;
+}
+.inlineRight {
+	display: inline;
+	float: right;
+}
+
+.duration {
+	font-size: 2rem !important;
+	padding: 0 !important;
+}
+
+.endCallParent {
+	flex-grow: 20;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .endCallParent svg {
 	padding: 0.5rem;
 }
 .endCall {
-	text-align: center;
 	background-color: red;
 	color: white;
 	border-radius: 50%;
 	cursor: pointer;
+	border: 2px solid white;
 }
-.callDuration {
+.endCall[disabled] {
+	background-color: grey;
+	cursor: not-allowed;
+}
+.recordingDiv {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	flex-grow: 1;
+}
+.recording {
+	color: red;
+	border: 2px solid white;
+	border-radius: 50%;
+	padding: 0.3rem;
+}
+.muteDiv {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	flex-grow: 1;
+}
+.mute {
+	color: white;
+	border: 2px solid white;
+	border-radius: 50%;
+	padding: 0.3rem;
+}
+.dialpadDiv {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	flex-grow: 1;
+}
+.dialpad {
+	color: white;
+	border: 2px solid white;
+	border-radius: 50%;
+	padding: 0.3rem;
+}
+
+/*.callDuration {
 	flex-grow: 2;
 	text-align: center;
 }
 .time {
-	color: white !important;
+	color: white;
 }
 .inlineBlockStyle {
 	display: inline-block;
@@ -64,4 +137,4 @@ img {
 .inlineStyle {
 	display: inline;
 	float: left;
-}
+} */

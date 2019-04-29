@@ -31,6 +31,12 @@ export default class IntentSummary extends Component {
 		console.log(this.props.summary);
 		if (this.props.summary) {
 			intents = this.getIntents(this.props.summary);
+		} else if (this.props.summaryFailed) {
+			intents = (
+				<p style={{ textAlign: 'center' }}>
+					Sorry, could not get summary for this call
+				</p>
+			);
 		}
 		return (
 			<div className='IntentSummaryRoot' ref='preCall'>

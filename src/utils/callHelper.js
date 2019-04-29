@@ -110,6 +110,9 @@ export const startTranscription = UID => {
 					console.log('Intent: ', summaryResponse);
 					// console.log('Summary: ', summaryResponse[0].summary);
 				} else {
+					store.dispatch({
+						type: actionTypes.SUMMARY_FAILED
+					});
 				}
 			} else {
 				store.dispatch({

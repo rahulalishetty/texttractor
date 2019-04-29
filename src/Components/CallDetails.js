@@ -17,7 +17,13 @@ class CallDetails extends Component {
 		let intents = null;
 		console.log('calldetails duration', this.props.duration);
 		if (this.props.onGoingCall) intents = <Timeline call={this.props.call} />;
-		else intents = <IntentSummary summary={this.props.summary} />;
+		else
+			intents = (
+				<IntentSummary
+					summary={this.props.summary}
+					summaryFailed={this.props.summaryFailed}
+				/>
+			);
 		return (
 			<div className='callDetailsRoot'>
 				{intents}
@@ -51,7 +57,8 @@ const mapStateToProps = state => {
 		transcript: state.transcript,
 		summary: state.summary,
 		call: state.call,
-		duration: state.duration
+		duration: state.duration,
+		summaryFailed: state.summaryFailed
 	};
 };
 

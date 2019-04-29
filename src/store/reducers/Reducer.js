@@ -9,7 +9,8 @@ const initialState = {
 	transcript: null,
 	summary: null,
 	duration: null,
-	startTimer: false
+	startTimer: false,
+	summaryFailed: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -31,7 +32,8 @@ const reducer = (state = initialState, action) => {
 				summary: null,
 				duration: null,
 				startTimer: false,
-				transcript: null
+				transcript: null,
+				summaryFailed: false
 			};
 		case actionTypes.END_CALL:
 			sipHangup();
@@ -62,6 +64,11 @@ const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				startTimer: true
+			};
+		case actionTypes.SUMMARY_FAILED:
+			return {
+				...state,
+				summaryFailed: true
 			};
 		default:
 			return state;
