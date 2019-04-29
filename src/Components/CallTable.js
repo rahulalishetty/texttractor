@@ -12,14 +12,16 @@ import axios from '../axios-firebase';
 class CallTable extends Component {
 	state = {
 		showModal: false,
-		contacts: null
+		contacts: [],
+		fetched: false
 	};
 
 	componentDidMount() {
 		let fetchedRows = null;
 		axios
-			.get('https://texttractive.firebaseio.com/contact.json')
+			.get('https://texttractive.firebaseio.com/contacts.json')
 			.then(response => {
+				console.log('fetched');
 				fetchedRows = response.data;
 				let fetchedRowsWithKey = [];
 				Object.keys(fetchedRows).map(rowKey => {
@@ -30,11 +32,12 @@ class CallTable extends Component {
 					console.log(fetchedRowsWithKey);
 				});
 				console.log(fetchedRowsWithKey);
-				// fetchedRows = Object.values(fetchedRows);
-				// this.props.addFetchedContactsToState(fetchedRowsWithKey);
-				this.setState({ contacts: fetchedRowsWithKey });
+				this.setState({ fetched: true, contacts: fetchedRowsWithKey });
 			})
-			.catch(error => console.log(error));
+			.catch(error => {
+				console.log(error);
+				this.setState({ fetched: true });
+			});
 	}
 
 	openModal = () => {
@@ -65,11 +68,11 @@ class CallTable extends Component {
 
 	addNewContactWithKeyToState = (newContact, updatedContacts) => {
 		axios
-			.post('/contact.json', newContact)
+			.post('/contacts.json', newContact)
 			.then(response => {
 				console.log(response);
 				axios
-					.get('https://texttractive.firebaseio.com/contact.json')
+					.get('https://texttractive.firebaseio.com/contacts.json')
 					.then(response => {
 						let fetchedRows = response.data;
 						let newRow = null;
@@ -91,7 +94,7 @@ class CallTable extends Component {
 	render() {
 		let callerTable = <Spinner />;
 
-		if (this.state.contacts) {
+		if (this.state.fetched) {
 			callerTable = (
 				<div className='Wrapper'>
 					<CallerList

@@ -12,7 +12,7 @@ class Timeline extends Component {
 	componentDidMount() {
 		axios
 			.get(
-				'https://texttractive.firebaseio.com/contact/' +
+				'https://texttractive.firebaseio.com/contacts/' +
 					this.props.call.key +
 					'.json'
 			)

@@ -33,7 +33,7 @@ img {
 	border-radius: 50%;
 	cursor: pointer;
 }
-.connecting {
+.connectionStatus {
 	flex-grow: 1;
 	text-align: center;
 }
@@ -57,4 +57,11 @@ img {
 }
 .time {
 	color: white !important;
+}
+.inlineBlockStyle {
+	display: inline-block;
+}
+.inlineStyle {
+	display: inline;
+	float: left;
 }

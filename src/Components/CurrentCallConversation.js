@@ -50,7 +50,7 @@ export default class CurrentCallConversation extends Component {
 		}
 		console.log(caller);
 		axios.put(
-			'https://texttractive.firebaseio.com/contact/' + callerId + '.json',
+			'https://texttractive.firebaseio.com/contacts/' + callerId + '.json',
 			caller
 		);
 	};

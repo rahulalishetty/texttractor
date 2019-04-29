@@ -30,7 +30,8 @@ const reducer = (state = initialState, action) => {
 				onGoingCall: false,
 				summary: null,
 				duration: null,
-				startTimer: false
+				startTimer: false,
+				transcript: null
 			};
 		case actionTypes.END_CALL:
 			sipHangup();
