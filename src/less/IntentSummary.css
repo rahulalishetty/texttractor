@@ -26,8 +26,29 @@
 
 .SaveButtonForSummary {
   position: absolute;
-  bottom: 1rem;
+  bottom: 3rem;
   right: 1rem;
   font-size: 13px;
   padding: 1rem;
+}
+
+.SaveButtonForSummary button {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 0;
+  font-size: 17px;
+  background-color: rgb(8, 192, 171);
+  color: white;
+  box-shadow: 2px 2px 2px 2px #b4d1d2;
+  cursor: pointer;
+}
+
+.SaveButtonForSummary button:hover,
+.SaveButtonForSummary button:focus {
+  box-shadow: -2px 0px 0px 0px #b4d1d2;
+}
+
+.SaveButtonForSummary button:disabled {
+  background-color: #d2d8da;
+  cursor: not-allowed;
 }

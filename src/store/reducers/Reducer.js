@@ -10,12 +10,17 @@ const initialState = {
   summary: [
     {
       confidence: "",
-      intent: "small_talk",
+      intent: "small_talk1",
       summary: "small talk"
     },
     {
       confidence: "",
-      intent: "small_talk",
+      intent: "small_talk2",
+      summary: "small talk"
+    },
+    {
+      confidence: "",
+      intent: "small_talk3",
       summary: "small talk"
     }
   ],
@@ -80,3 +85,21 @@ const reducer = (state = initialState, action) => {
 };
 
 export default reducer;
+
+// [
+//   {
+//     confidence: "",
+//     intent: "small_talk1",
+//     summary: "small talk"
+//   },
+//   {
+//     confidence: "",
+//     intent: "small_talk2",
+//     summary: "small talk"
+//   },
+//   {
+//     confidence: "",
+//     intent: "small_talk3",
+//     summary: "small talk"
+//   }
+// ];

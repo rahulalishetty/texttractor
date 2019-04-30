@@ -28,22 +28,28 @@ export default class CurrentCallConversation extends Component {
 
     if (this.props.transcript) {
       let splitTranscription = splitTranscript(this.props.transcript);
-      chat = splitTranscription.map(c => {
+      chat = splitTranscription.map((c, index) => {
         console.log("trans: ", c);
         if (c.includes(TRANSCRIPT_DELIMETERS.DETECTING_SPEAKERS)) {
           return (
-            <Message speaking>
+            <Message key={"message" + index} speaking>
               {c.replace(TRANSCRIPT_DELIMETERS.DETECTING_SPEAKERS, "")}
               <Loading />
             </Message>
           );
         } else if (c.includes(TRANSCRIPT_DELIMETERS.COLLECTOR)) {
           return (
-            <Message>{c.replace(TRANSCRIPT_DELIMETERS.COLLECTOR, "")}</Message>
+            <Message key={"message" + index}>
+              {c.replace(TRANSCRIPT_DELIMETERS.COLLECTOR, "")}
+            </Message>
           );
         } else if (c.includes(TRANSCRIPT_DELIMETERS.CUSTOMER)) {
           return (
-            <Message customerName={this.props.callerName} left>
+            <Message
+              key={"message" + index}
+              customerName={this.props.callerName}
+              left
+            >
               {c.replace(TRANSCRIPT_DELIMETERS.CUSTOMER, "")}
             </Message>
           );
@@ -54,7 +60,7 @@ export default class CurrentCallConversation extends Component {
 
     return (
       <div className="CurrentCallConversationRoot">
-        <ChatHead>{this.props.callerName}</ChatHead>
+        <ChatHead>Call Transcription</ChatHead>
         <div className="chat" ref="chat">
           {chat}
           <div style={{ padding: "2%" }}> </div>

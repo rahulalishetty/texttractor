@@ -23,8 +23,8 @@ export default class TimelineCard extends Component {
 						style={{ transform: this.state.transform }}
 					/>
 					<div className='Date'>
-						{this.props.date}{' '}
-						<span className='duration'>
+						{this.props.date}
+						<span className='TimelineDuration'>
 							{this.props.time} (Duration: {this.props.duration})
 						</span>
 					</div>

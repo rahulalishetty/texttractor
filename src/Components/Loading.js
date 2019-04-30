@@ -3,10 +3,10 @@ import '../less/Loading.css';
 export default class Loading extends Component {
 	render() {
 		return (
-			<span class='dots-cont'>
-				<span class='dot dot-1' />
-				<span class='dot dot-2' />
-				<span class='dot dot-3' />
+			<span className='dots-cont'>
+				<span className='dot dot-1' />
+				<span className='dot dot-2' />
+				<span className='dot dot-3' />
 			</span>
 		);
 	}

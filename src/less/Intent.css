@@ -1,6 +1,6 @@
 .IntentRoot {
   width: 90%;
-  height: 10%;
+  height: 8%;
   margin-left: 5%;
   border-radius: 2px;
   display: flex;
@@ -45,16 +45,27 @@
 
 .Accept {
   position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 1.8rem;
+  top: 0.6rem;
+  right: 0.5rem;
   color: green;
+  vertical-align: middle;
+  border-radius: 50%;
+  border: 0.08rem solid green;
+  padding: 0.05rem;
 }
 
 .Decline {
   position: absolute;
-  top: 1.4rem;
-  right: 0;
-  font-size: 1.8rem;
+  top: 0.6rem;
+  right: 2.5rem;
   color: red;
+  border-radius: 50%;
+  border: 0.08rem solid red;
+  vertical-align: middle;
+  padding: 0.05rem;
+}
+
+.MuiSvgIcon-root-1 {
+  height: 1rem !important;
+  width: 1rem !important;
 }

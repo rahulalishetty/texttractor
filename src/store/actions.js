@@ -1,7 +1,8 @@
-export const PLACE_CALL = "PLACE_CALL";
-export const GOTO_HOME = "GOTO_HOME";
-export const END_CALL = "END_CALL";
-export const STORE_TRANSCRIPTION = "STORE_TRANSCRIPTION";
-export const STORE_SUMMARY = "STORE_SUMMARY";
-export const SET_DURATION = "SET_DURATION";
-export const SUMMARY_FAILED = "SUMMARY_FAILED";
+export const PLACE_CALL = 'PLACE_CALL';
+export const GOTO_HOME = 'GOTO_HOME';
+export const END_CALL = 'END_CALL';
+export const STORE_TRANSCRIPTION = 'STORE_TRANSCRIPTION';
+export const STORE_SUMMARY = 'STORE_SUMMARY';
+export const SET_DURATION = 'SET_DURATION';
+export const START_TIMER = 'START_TIMER';
+export const SUMMARY_FAILED = 'SUMMARY_FAILED';

@@ -1,5 +1,5 @@
 .TimelineRoot {
-  height: 90vh;
+  height: 84vh;
   display: inline;
   float: left;
   overflow: auto;
@@ -19,6 +19,8 @@
   height: 80%;
   width: 80%;
   /* padding-left: 8%; */
+  border-radius: 50%;
+  box-shadow: 3px 3px 3px 3px rgba(8, 192, 171, 0.2);
 }
 
 .NoHistory p {

@@ -22,9 +22,14 @@ export default class IntentSummary extends Component {
       today.getFullYear();
     var time = today.getHours() + ":" + today.getMinutes();
     console.log("header duration", this.props.duration);
+    let persistSummary = this.state.persistantSummary;
+    persistSummary.forEach(eachSummary => {
+      delete eachSummary.decisionMade;
+    });
+    console.log(persistSummary);
     let currentCallDetails = {
       transcript: this.props.transcript,
-      summary: this.state.persistantSummary,
+      summary: persistSummary,
       date: date,
       time: time,
       duration: this.props.duration
@@ -49,7 +54,15 @@ export default class IntentSummary extends Component {
 
   componentDidMount() {
     this.refs.preCall.scrollTop = this.refs.preCall.scrollHeight;
-    this.setState({ persistantSummary: this.props.summary });
+    let requiredSummary = this.props.summary;
+    if (!this.state.decisionMade) {
+      requiredSummary.forEach((eachSummary, index) => {
+        Object.assign(eachSummary, {
+          decisionMade: false
+        });
+      });
+    }
+    this.setState({ persistantSummary: requiredSummary });
   }
 
   spliceSummary = index => {
@@ -60,17 +73,25 @@ export default class IntentSummary extends Component {
     this.setState({ persistantSummary: updatedSummary });
   };
 
+  addIntent = index => {
+    let updatedSummary = this.state.persistantSummary;
+    updatedSummary[index].decisionMade = true;
+    this.setState({ persistantSummary: updatedSummary });
+  };
+
   getIntents = summary => {
-    const colors = ["#757575", "#ff5722", "#795548", "#78909c"];
     // this.setState({ persistantSummary: summaryWithSelectedFlag });
+    const colors = ["#757575", "#ff5722", "#795548", "#78909c"];
     return summary.map((eachSummary, index) => {
       return (
         <Intent
           key={index}
-          intent={eachSummary.intent}
-          color={colors[index % 4]}
+          intentSummary={eachSummary}
           index={index}
           spliceSummary={this.spliceSummary}
+          addIntent={this.addIntent}
+          color={colors[index % 4]}
+          saved={this.state.saved}
         >
           {eachSummary.summary}
         </Intent>
@@ -78,24 +99,38 @@ export default class IntentSummary extends Component {
     });
   };
 
+  allDecisionOnIntentsComplete = () => {
+    let summary = this.state.persistantSummary;
+    if (summary) {
+      let decisionFlag = true;
+      summary.forEach(eachSummary => {
+        if (!eachSummary.decisionMade) decisionFlag = false;
+      });
+      return decisionFlag;
+    } else {
+      return false;
+    }
+  };
+
   render() {
     // if (this.props.summary && this.props.call) {
     //   this.persistCallHistory();
     // }
-    let intents = <Spinner />;
-    console.log(this.props.summary);
-    if (this.props.summary) {
-      intents = this.getIntents(this.props.summary);
-    } else if (this.props.summaryFailed) {
-      intents = <p>sorry, could not get summary for this call</p>;
+    if (this.allDecisionOnIntentsComplete()) {
+      this.persistantSummary();
+    }
+    let intents = null;
+    console.log(this.state.persistantSummary);
+    if (this.state.persistantSummary) {
+      intents = this.getIntents(this.state.persistantSummary);
     }
     return (
       <div className="IntentSummaryRoot" ref="preCall">
         {intents}
         <span className="SaveButtonForSummary">
-          <button onClick={this.persistantSummary} disabled={this.state.saved}>
+          {/* <button onClick={this.persistantSummary} disabled={this.state.saved}>
             Save
-          </button>
+          </button> */}
         </span>
       </div>
     );

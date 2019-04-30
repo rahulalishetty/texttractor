@@ -1,6 +1,6 @@
 .CurrentCallConversationRoot {
   display: inline;
-  float: left;
+  float: right;
   width: 50%;
   margin: 0;
   border: 0;
@@ -9,7 +9,7 @@
 
 .chat {
   width: 100%;
-  height: 81.5vh;
+  height: 75vh;
   overflow: auto;
   padding-top: 10px;
 }
