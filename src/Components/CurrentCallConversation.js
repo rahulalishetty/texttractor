@@ -72,6 +72,9 @@ export default class CurrentCallConversation extends Component {
 					return (
 						<Message key={'message' + index} speaking>
 							{c.replace(TRANSCRIPT_DELIMETERS.DETECTING_SPEAKERS, '')}
+							<span style={{ color: 'grey', fontSize: '10px' }}>
+								Detecting speakers
+							</span>
 							<Loading />
 						</Message>
 					);

@@ -6,21 +6,30 @@
 	width: 50%;
 	margin: 0;
 	border: 0;
-	padding-top: 20px;
+	/* padding-top: 10px; */
 	box-sizing: border-box;
 	border-right: 1px solid white;
 }
 
 .NoHistory {
-  text-align: center;
+	text-align: center;
 }
 
 .NoHistory img {
-  height: 80%;
-  width: 80%;
-  /* padding-left: 8%; */
+	height: 80%;
+	width: 80%;
+	/* padding-left: 8%; */
 }
 
 .NoHistory p {
-  font-size: 13px;
+	font-size: 13px;
+}
+.TimelineHead {
+	text-align: center;
+	font-size: 20px;
+	padding: 2.75%;
+	background-color: #b2dfdb;
+	width: 94%;
+	margin: auto;
+	margin-bottom: 20px;
 }

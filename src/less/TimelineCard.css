@@ -1,7 +1,9 @@
 .TimelineCardRoot {
 	width: 80%;
-	margin-left: 10%;
+	margin-left: 5%;
 	cursor: pointer;
+	display: inline-block;
+	margin-top: -2px;
 }
 .DateHead {
 	display: flex;
@@ -10,24 +12,45 @@
 }
 .CallIcon {
 	border-radius: 50%;
-	color: white;
-	background-color: black;
-	padding: 5px;
+	color: #f0f3f4;
+	border: 1px solid grey;
+	background-color: darkblue;
+	padding: 4px;
 	margin-right: 2%;
-	transform: rotate(0deg);
+	display: inline;
+	float: left;
 }
-.Date {
-	flex-grow: 1;
-}
-.Note {
-	margin-left: 15px;
-	border-left: 2px solid black;
-	padding-left: 10px;
+.cardRoot {
+	min-height: 5vh;
+	display: flex;
+	flex-direction: row;
+	float: left;
+	width: 100%;
+	margin-top: -35px;
+	margin-left: 16px;
+	border-left: 1px solid grey;
+	position: relative;
 	padding-bottom: 10px;
-	overflow: hidden;
-	transition: font-size 0.1s;
 }
-.TimelineDuration {
-	color: grey;
+.timelineCallInfo {
+	/* margin-top: 20px;*/
+	margin-left: 30px;
+	padding: 2% 2% 2% 2%;
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	float: left;
+	width: 100%;
+	border-radius: 2px;
+	box-shadow: 1px 1px 5px grey;
+}
+.note {
+	/* flex-grow: 5; */
+	flex: 0 0 60%;
+	font-weight: 600;
+}
+.dateTimeDuration {
+	/* margin-left: auto; */
+	color: darkblue;
 	font-size: 0.8rem;
 }

@@ -51,6 +51,20 @@ class Timeline extends Component {
 		}
 		return (
 			<div className='TimelineRoot' ref='timeline'>
+				<p className='TimelineHead'>Call History</p>
+
+				{/* <TimelineCard date='02-03-2018' time='12:30' duration='02:13'>
+					Accepted to pay make the payment
+				</TimelineCard>
+				<TimelineCard date='02-03-2018' time='12:30' duration='02:13'>
+					Conflict to pay
+				</TimelineCard>
+				<TimelineCard date='02-03-2018' time='12:30' duration='02:13'>
+					Willing to pay half the amount
+				</TimelineCard>
+				<TimelineCard date='02-03-2018' time='12:30' duration='02:13'>
+					Will pay make the whole payment nextweek
+				</TimelineCard> */}
 				{timeLine}
 				<div style={{ padding: '3%' }}> </div>
 			</div>
