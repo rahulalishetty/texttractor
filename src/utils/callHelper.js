@@ -100,10 +100,10 @@ export const startTranscription = UID => {
           let rawSummary = finalTranscriptionWithSummary[1].trim();
           let summaryResponse =
             rawSummary === "{}" ? "[]" : JSON.parse(rawSummary);
-          store.dispatch({
-            type: actionTypes.STORE_SUMMARY,
-            payload: summaryResponse
-          });
+          //   store.dispatch({
+          //     type: actionTypes.STORE_SUMMARY,
+          //     payload: summaryResponse
+          //   });
           store.dispatch({
             type: actionTypes.END_CALL
           });

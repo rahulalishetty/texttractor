@@ -6,6 +6,7 @@ import Timeline from "./Timeline";
 import PropTypes from "prop-types";
 import { sipCall } from "../utils/sipUtils";
 import { connect } from "react-redux";
+import Spinner from "./Spinner";
 
 class CallDetails extends Component {
   constructor(props) {
@@ -13,17 +14,25 @@ class CallDetails extends Component {
     sipCall("+18558647776");
   }
 
+  state = {
+    persistantSummary: []
+  };
+
   render() {
     let intents = null;
     console.log("calldetails duration", this.props.duration);
     if (this.props.onGoingCall) intents = <Timeline call={this.props.call} />;
-    else
+    else if (this.props.summary)
       intents = (
         <IntentSummary
+          transcript={this.props.transcript}
           summary={this.props.summary}
+          call={this.props.call}
+          duration={this.props.duration}
           summaryFailed={this.props.summaryFailed}
         />
       );
+    else intents = <Spinner style={{ width: "50%" }} />;
     return (
       <div className="callDetailsRoot">
         {intents}

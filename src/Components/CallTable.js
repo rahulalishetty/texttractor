@@ -94,6 +94,7 @@ class CallTable extends Component {
       })
       .catch(error => console.log(error));
   };
+
   render() {
     let callerTable = <Spinner />;
     // let callerTable = null;

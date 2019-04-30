@@ -7,7 +7,18 @@ const initialState = {
   phoneNumber: null,
   callerName: null,
   transcript: null,
-  summary: null,
+  summary: [
+    {
+      confidence: "",
+      intent: "small_talk",
+      summary: "small talk"
+    },
+    {
+      confidence: "",
+      intent: "small_talk",
+      summary: "small talk"
+    }
+  ],
   duration: null,
   summaryFailed: false
 };
@@ -30,7 +41,9 @@ const reducer = (state = initialState, action) => {
         onGoingCall: false,
         summary: null,
         duration: null,
-        summaryFailed: false
+        summaryFailed: false,
+        date: null,
+        time: null
       };
     case actionTypes.END_CALL:
       sipHangup();

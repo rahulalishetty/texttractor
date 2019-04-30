@@ -46,6 +46,8 @@
   border-radius: 0.15rem;
   border: 0.08rem solid #d9deea;
   background-color: #eaedf3;
+  padding-left: 0.2rem;
+  caret-color: rgb(8, 192, 171);
 }
 
 .SaveButton {
