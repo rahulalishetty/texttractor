@@ -4,14 +4,14 @@ export default class ChatHead extends Component {
 	styleRoot = {
 		display: 'inline-block',
 		padding: '3%',
-		boxShadow: '0 2px 5px grey',
+		boxShadow: '2px 2px 2px rgba(8, 192, 171, 0.6)',
 		width: '94%'
 	};
 	styleChildren = {
 		display: 'inline',
 		float: 'left',
 		textAlign: 'center',
-		fontSize: '1rem'
+		fontSize: '13px'
 	};
 	render() {
 		return (

@@ -1,13 +1,21 @@
 .IntentRoot {
 	width: 90%;
+	/* height: 8%; */
 	margin-left: 5%;
 	border-radius: 2px;
 	display: flex;
 	flex-direction: row;
-	/* box-shadow: 2px 2px 2px grey; */
 	margin-bottom: 5px;
-	border: 1px solid lightgrey;
+	position: relative;
+	border-radius: 5px;
+	margin-bottom: 15px;
 }
+
+.ActiveRoot {
+	box-shadow: 2px 2px 2px 2px #b4d1d2;
+	background-color: white;
+}
+
 .IntentRoot:hover {
 	cursor: pointer;
 }
@@ -20,11 +28,48 @@
 	justify-content: center;
 	flex-grow: 1;
 	padding: 2% 2% 2% 2%;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	flex: 0 0 20%;
 }
 
 .IntentBody {
 	display: flex;
-	flex: 0 0 80%;
 	padding: 2% 2% 2% 2%;
 	align-items: center;
+	/* text-align: center; */
+	background-color: white;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	flex-grow: 30;
+}
+.IntentBodyRoot {
+	display: flex;
+	flex-grow: 1;
+}
+.AcceptRejectIcons {
+	background-color: white;
+	display: flex;
+	flex-direction: row;
+	flex-grow: 0.3;
+	align-items: center;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+.Accept {
+	color: green;
+	vertical-align: middle;
+	border-radius: 50%;
+	border: 1px solid green;
+	padding: 0.05rem;
+	transform: scale(0.8);
+}
+
+.Decline {
+	color: red;
+	border-radius: 50%;
+	border: 1px solid red;
+	vertical-align: middle;
+	padding: 0.05rem;
+	transform: scale(0.8);
 }

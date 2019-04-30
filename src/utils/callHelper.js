@@ -82,6 +82,7 @@ export const startTranscription = UID => {
 				console.log('Ending');
 				console.log('closed');
 				eventSource.close();
+
 				let finalTranscriptionWithSummary = response.split(
 					'END_OF_TRANSCRIPTION'
 				);
@@ -110,6 +111,7 @@ export const startTranscription = UID => {
 					console.log('Intent: ', summaryResponse);
 					// console.log('Summary: ', summaryResponse[0].summary);
 				} else {
+					console.log('summary failed');
 					store.dispatch({
 						type: actionTypes.SUMMARY_FAILED
 					});

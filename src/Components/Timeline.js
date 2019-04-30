@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import NoHistory from '../images/noHistory.png';
 import * as actionTypes from '../store/actions';
 import axios from '../axios-firebase';
+import ChatHead from './ChatHead';
 
 class Timeline extends Component {
 	state = {
@@ -30,41 +31,35 @@ class Timeline extends Component {
 	}
 	getTimeLineCards = () => {
 		return this.state.callHistory.map((eachCallHistory, index) => {
-			return (
-				<TimelineCard
-					key={this.props.call.key + index}
-					date={eachCallHistory.date}
-					time={eachCallHistory.time}
-					duration={eachCallHistory.duration}
-				>
-					{eachCallHistory.summary[0].summary}
-				</TimelineCard>
-			);
+			return eachCallHistory.summary.map((eachSummary, summaryIndex) => {
+				return (
+					<TimelineCard
+						key={this.props.call.key + index + summaryIndex}
+						date={eachCallHistory.date}
+						time={eachCallHistory.time}
+						duration={eachCallHistory.duration}
+					>
+						{eachSummary.summary}
+					</TimelineCard>
+				);
+			});
 		});
 	};
 
 	render() {
 		console.log('timeline', this.state.callHistory);
-		let timeLine = <p> No History </p>;
+		let timeLine = (
+			<div className='NoHistory'>
+				<p>No call history found </p> <img src={NoHistory} />{' '}
+			</div>
+		);
 		if (this.state.callHistory) {
 			timeLine = this.getTimeLineCards();
 		}
 		return (
 			<div className='TimelineRoot' ref='timeline'>
-				<p className='TimelineHead'>Call History</p>
-
-				{/* <TimelineCard date='02-03-2018' time='12:30' duration='02:13'>
-					Accepted to pay make the payment
-				</TimelineCard>
-				<TimelineCard date='02-03-2018' time='12:30' duration='02:13'>
-					Conflict to pay
-				</TimelineCard>
-				<TimelineCard date='02-03-2018' time='12:30' duration='02:13'>
-					Willing to pay half the amount
-				</TimelineCard>
-				<TimelineCard date='02-03-2018' time='12:30' duration='02:13'>
-					Will pay make the whole payment nextweek
-				</TimelineCard> */}
+				<ChatHead>CALL HISTORY</ChatHead>
+				<div style={{ padding: '2%' }}> </div>
 				{timeLine}
 				<div style={{ padding: '3%' }}> </div>
 			</div>

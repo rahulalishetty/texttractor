@@ -4,13 +4,11 @@ import Message from './Message';
 import ChatHead from './ChatHead';
 import Loading from './Loading';
 import { splitTranscript } from '../utils/splitTranscript';
-import axios from '../axios-firebase';
 import { TRANSCRIPT_DELIMETERS } from '../utils/TRANSCRIPT_DELIMETERS';
 
 export default class CurrentCallConversation extends Component {
 	state = {
-		transcript: [],
-		summary: null
+		transcript: []
 	};
 
 	static getDerivedStateFromProps(nextProps, prevState) {
@@ -21,49 +19,11 @@ export default class CurrentCallConversation extends Component {
 		return null;
 	}
 
-	persistCallHistory = () => {
-		console.log('in persist', this.props.call);
-		let caller = this.props.call;
-		let today = new Date();
-		let date =
-			today.getDate() +
-			'-' +
-			(today.getMonth() + 1) +
-			'-' +
-			today.getFullYear();
-		var time = today.getHours() + ':' + today.getMinutes();
-		console.log('header duration', this.props.duration);
-		let currentCallDetails = {
-			transcript: this.props.transcript,
-			summary: this.props.summary,
-			date: date,
-			time: time,
-			duration: this.props.duration
-		};
-		let callerId = caller.key;
-		delete caller.key;
-		if (caller.callHistory === undefined) {
-			Object.assign(caller, { callHistory: [] });
-			caller.callHistory.push(currentCallDetails);
-		} else {
-			caller.callHistory.push(currentCallDetails);
-		}
-		console.log(caller);
-		if (callerId)
-			axios.put(
-				'https://texttractive.firebaseio.com/contacts/' + callerId + '.json',
-				caller
-			);
-	};
 	componentDidUpdate() {
 		this.refs.chat.scrollTop = this.refs.chat.scrollHeight;
 	}
 	render() {
 		let chat = null;
-		if (this.props.summary && this.props.call) {
-			this.persistCallHistory();
-		}
-
 		if (this.props.transcript) {
 			let splitTranscription = splitTranscript(this.props.transcript);
 			chat = splitTranscription.map((c, index) => {
@@ -73,9 +33,9 @@ export default class CurrentCallConversation extends Component {
 						<Message key={'message' + index} speaking>
 							{c.replace(TRANSCRIPT_DELIMETERS.DETECTING_SPEAKERS, '')}
 							<span style={{ color: 'grey', fontSize: '10px' }}>
-								Detecting speakers
+								(Detecting speakers
+								<Loading />)
 							</span>
-							<Loading />
 						</Message>
 					);
 				} else if (c.includes(TRANSCRIPT_DELIMETERS.COLLECTOR)) {
@@ -101,7 +61,7 @@ export default class CurrentCallConversation extends Component {
 
 		return (
 			<div className='CurrentCallConversationRoot'>
-				<ChatHead>Call Transcript</ChatHead>
+				<ChatHead>CALL TRANSCRIPT</ChatHead>
 				<div className='chat' ref='chat'>
 					{chat}
 					<div style={{ padding: '2%' }}> </div>

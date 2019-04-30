@@ -7,9 +7,9 @@ const initialState = {
 	phoneNumber: null,
 	callerName: null,
 	transcript: null,
+	startTimer: false,
 	summary: null,
 	duration: null,
-	startTimer: false,
 	summaryFailed: false
 };
 
@@ -31,16 +31,15 @@ const reducer = (state = initialState, action) => {
 				onGoingCall: false,
 				summary: null,
 				duration: null,
-				startTimer: false,
-				transcript: null,
-				summaryFailed: false
+				summaryFailed: false,
+				date: null,
+				time: null
 			};
 		case actionTypes.END_CALL:
 			sipHangup();
 			return {
 				...state,
-				onGoingCall: false,
-				startTimer: false
+				onGoingCall: false
 			};
 		case actionTypes.STORE_TRANSCRIPTION:
 			console.log('in store', action.payload);
@@ -60,15 +59,15 @@ const reducer = (state = initialState, action) => {
 				...state,
 				duration: action.payload
 			};
-		case actionTypes.START_TIMER:
-			return {
-				...state,
-				startTimer: true
-			};
 		case actionTypes.SUMMARY_FAILED:
 			return {
 				...state,
 				summaryFailed: true
+			};
+		case actionTypes.START_TIMER:
+			return {
+				...state,
+				startTimer: true
 			};
 		default:
 			return state;
@@ -76,3 +75,21 @@ const reducer = (state = initialState, action) => {
 };
 
 export default reducer;
+
+// [
+//   {
+//     confidence: "",
+//     intent: "small_talk1",
+//     summary: "small talk"
+//   },
+//   {
+//     confidence: "",
+//     intent: "small_talk2",
+//     summary: "small talk"
+//   },
+//   {
+//     confidence: "",
+//     intent: "small_talk3",
+//     summary: "small talk"
+//   }
+// ];

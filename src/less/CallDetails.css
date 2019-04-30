@@ -5,3 +5,25 @@
 	width: 100%;
 	height: 90vh;
 }
+
+.NoSummary {
+	float: left;
+	margin: 0;
+	width: 50%;
+	text-align: center;
+}
+
+.NoSummary img {
+	height: 80%;
+	width: 80%;
+	/* padding-left: 8%; */
+	border-radius: 50%;
+	box-shadow: 3px 3px 3px 3px rgba(8, 192, 171, 0.2);
+	/* margin-left: 5%; */
+}
+
+.NoSummary p {
+	font-size: 13px;
+	width: 100%;
+	/* text-align: center; */
+}

@@ -10,8 +10,8 @@ export default function CallerList(props) {
 				<tbody>
 					<tr className='Row HeaderRow'>
 						<th style={{ width: '30%' }}>Name</th>
-						<th style={{ width: '50%' }}>ReasonToCall</th>
-						<th style={{ width: '15%' }}>Type</th>
+						<th style={{ width: '50%' }}>Reason To Call</th>
+						<th style={{ width: '15%' }}>Call</th>
 					</tr>
 					{props.contacts
 						? props.contacts.map(contact => {
